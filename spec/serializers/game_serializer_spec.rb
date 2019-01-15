@@ -9,9 +9,9 @@ describe GameSerializer do
                     date: Date.new(2019, 1, 1),
                     season: 2019,
                     home_team: build(:team_west),
-                    away_team: build(:team_east),
+                    visitor_team: build(:team_east),
                     home_team_id: 1,
-                    away_team_id: 2,
+                    visitor_team_id: 2,
                     player_stats: [
                       home_player_stat_1,
                       home_player_stat_2,
@@ -19,15 +19,35 @@ describe GameSerializer do
                     ])
   end
 
-  it 'serializes correctly' do
-    res = JSON.parse(GameSerializer.render(game)).with_indifferent_access
+  context 'when expanded' do
+    it 'serializes correctly' do
+      res = JSON.parse(GameSerializer.render(game, view: :expanded)).with_indifferent_access
 
-    expect(res[:id]).to eq 1
-    expect(res[:date]).to eq '2019-01-01'
-    expect(res[:season]).to eq 2019
-    expect(res[:home_team_score]).to eq 30
-    expect(res[:away_team_score]).to eq 1
-    expect(res[:home_team]).to_not be_nil
-    expect(res[:away_team]).to_not be_nil
+      expect(res[:id]).to eq 1
+      expect(res[:date]).to eq '2019-01-01'
+      expect(res[:season]).to eq 2019
+      expect(res[:home_team_score]).to eq 30
+      expect(res[:visitor_team_score]).to eq 1
+      expect(res[:home_team]).to_not be_nil
+      expect(res[:visitor_team]).to_not be_nil
+      expect(res[:home_team_id]).to be_nil
+      expect(res[:visitor_team_id]).to be_nil
+    end
+  end
+
+  context 'when slim' do
+    it 'serializes correctly' do
+      res = JSON.parse(GameSerializer.render(game, view: :slim)).with_indifferent_access
+
+      expect(res[:id]).to eq 1
+      expect(res[:date]).to eq '2019-01-01'
+      expect(res[:season]).to eq 2019
+      expect(res[:home_team_score]).to eq 30
+      expect(res[:visitor_team_score]).to eq 1
+      expect(res[:home_team]).to be_nil
+      expect(res[:visitor_team]).to be_nil
+      expect(res[:home_team_id]).to eq game.home_team_id
+      expect(res[:visitor_team_id]).to eq game.visitor_team_id
+    end
   end
 end

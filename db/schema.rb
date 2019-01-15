@@ -11,9 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20190118035716) do
-
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
   create_table "games", id: :integer, default: nil, force: :cascade do |t|
     t.datetime "date", null: false

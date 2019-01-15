@@ -13,6 +13,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+ENV['RAILS_ENV'] ||= 'test'
 require 'rails_helper'
 
 RSpec.configure do |config|

@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :team do
+    id
     conference { 'East' }
     division { 'Central' }
     city { 'Chicago' }
@@ -9,6 +10,7 @@ FactoryBot.define do
   end
 
   factory :team_east, class: Team do
+    id
     conference { 'East' }
     division { 'Central' }
     city { 'Chicago' }
@@ -18,6 +20,7 @@ FactoryBot.define do
   end
 
   factory :team_west, class: Team do
+    id
     conference { 'West' }
     division { 'Pacific' }
     city { 'Los Angeles' }

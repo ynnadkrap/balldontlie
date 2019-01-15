@@ -5,10 +5,10 @@ class Api::V1::GamesController < ApplicationController
     games = GameQuery.new(params: params).games
                      .page(params[:page] || 0)
                      .per(params[:per_page] || DEFAULT_PAGE_SIZE)
-                     .includes(:player_stats, :home_team, :away_team)
+                     .includes(:player_stats, :home_team, :visitor_team)
 
     render json: {
-      data: GameSerializer.render_as_hash(games)
+      data: GameSerializer.render_as_hash(games, view: :expanded)
     }.merge(pagination_data(games))
   end
 

@@ -13,9 +13,9 @@ class GameSerializer < Blueprinter::Base
     end
   end
 
-  field :away_team_score do |game|
+  field :visitor_team_score do |game|
     game.player_stats.reduce(0) do |acc, stat|
-      if stat.team_id == game.away_team_id
+      if stat.team_id == game.visitor_team_id
         acc + stat.pts
       else
         acc
@@ -23,6 +23,12 @@ class GameSerializer < Blueprinter::Base
     end
   end
 
-  association :home_team, blueprint: TeamSerializer
-  association :away_team, blueprint: TeamSerializer
+  view :expanded do
+    association :home_team, blueprint: TeamSerializer
+    association :visitor_team, blueprint: TeamSerializer
+  end
+
+  view :slim do
+    fields :home_team_id, :visitor_team_id
+  end
 end
