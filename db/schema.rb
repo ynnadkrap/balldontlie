@@ -10,25 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190113052121) do
+ActiveRecord::Schema.define(version: 20190117013621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "games", force: :cascade do |t|
-    t.date "date", null: false
-    t.bigint "home_team_id", null: false
-    t.bigint "away_team_id", null: false
+  create_table "games", id: :integer, default: nil, force: :cascade do |t|
+    t.datetime "date", null: false
+    t.integer "home_team_id", null: false
+    t.integer "visitor_team_id", null: false
     t.integer "season", null: false
-    t.index ["away_team_id"], name: "index_games_on_away_team_id"
-    t.index ["home_team_id"], name: "index_games_on_home_team_id"
+    t.serial "public_id", null: false
+    t.index ["date", "home_team_id", "visitor_team_id"], name: "games_unique_constraint", unique: true
+    t.index ["public_id"], name: "idx_games_public_id"
   end
 
-  create_table "player_stats", force: :cascade do |t|
-    t.bigint "team_id", null: false
-    t.bigint "game_id", null: false
-    t.bigint "player_id", null: false
-    t.string "min"
+  create_table "knex_migrations", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
+    t.integer "batch"
+    t.datetime "migration_time"
+  end
+
+  create_table "knex_migrations_lock", primary_key: "index", id: :serial, force: :cascade do |t|
+    t.integer "is_locked"
+  end
+
+  create_table "player_stats", id: :serial, force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "team_id", null: false
+    t.integer "player_id", null: false
+    t.text "min"
     t.integer "fgm"
     t.integer "fga"
     t.decimal "fg_pct"
@@ -47,28 +58,43 @@ ActiveRecord::Schema.define(version: 20190113052121) do
     t.integer "turnover"
     t.integer "pf"
     t.integer "pts"
-    t.index ["game_id"], name: "index_player_stats_on_game_id"
-    t.index ["player_id"], name: "index_player_stats_on_player_id"
-    t.index ["team_id"], name: "index_player_stats_on_team_id"
+    t.serial "public_id", null: false
+    t.index ["game_id", "player_id"], name: "player_stats_game_unique", unique: true
+    t.index ["public_id"], name: "idx_player_stats_public_id"
   end
 
-  create_table "players", force: :cascade do |t|
+  create_table "players", id: :integer, default: nil, force: :cascade do |t|
     t.text "first_name", null: false
     t.text "last_name", null: false
-    t.string "position", null: false
-    t.bigint "team_id", null: false
-    t.index ["team_id"], name: "index_players_on_team_id"
+    t.string "position", limit: 10, null: false
+    t.integer "height_feet"
+    t.integer "height_inches"
+    t.integer "weight_pounds"
+    t.integer "team_id", null: false
+    t.datetime "updated_at", default: -> { "now()" }, null: false
+    t.datetime "created_at", default: -> { "now()" }, null: false
+    t.serial "public_id", null: false
+    t.index ["public_id"], name: "idx_players_id"
   end
 
-  create_table "teams", force: :cascade do |t|
-    t.string "conference", null: false
-    t.string "division", null: false
-    t.string "city", null: false
-    t.string "abbreviation", null: false
-    t.string "name", null: false
-    t.string "full_name", null: false
+  create_table "teams", id: :integer, default: nil, force: :cascade do |t|
+    t.string "conference", limit: 4, null: false
+    t.string "division", limit: 20, null: false
+    t.text "city", null: false
+    t.string "abbreviation", limit: 3, null: false
+    t.text "name", null: false
+    t.text "full_name", null: false
+    t.serial "public_id", null: false
+    t.index ["public_id"], name: "idx_teams_public_id"
   end
 
-  add_foreign_key "games", "teams", column: "away_team_id"
-  add_foreign_key "games", "teams", column: "home_team_id"
+  create_table "updates", id: false, force: :cascade do |t|
+    t.datetime "date", null: false
+  end
+
+  add_foreign_key "games", "teams", column: "home_team_id", name: "games_home_team_id_fkey"
+  add_foreign_key "games", "teams", column: "visitor_team_id", name: "games_visitor_team_id_fkey"
+  add_foreign_key "player_stats", "games", name: "player_stats_game_id_fkey"
+  add_foreign_key "player_stats", "teams", name: "player_stats_team_id_fkey"
+  add_foreign_key "players", "teams", name: "players_team_id_fkey"
 end

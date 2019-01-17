@@ -1,5 +1,17 @@
+Exclude:
+  - 'db/**/*'
+
 Style/Documentation:
   Enabled: false
 
 Style/ClassAndModuleChildren:
+  Enabled: false
+
+Layout/SpaceAroundOperators:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
   Enabled: false
