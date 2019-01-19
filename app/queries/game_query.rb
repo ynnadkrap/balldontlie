@@ -2,25 +2,38 @@ class GameQuery
   attr_reader :params
 
   def initialize(params: {})
-    @params = params
+    @params = {
+      dates: [],
+      seasons: [],
+      team_ids: []
+    }.merge(params)
   end
 
   def games
     scope = Game.all
 
-    scope = date(scope) if params[:date]
-    scope = season(scope) if params[:season]
+    scope = dates(scope) if params[:dates].any?
+    scope = seasons(scope) if params[:seasons].any?
+    scope = team_ids(scope) if params[:team_ids].any?
 
     scope
   end
 
   private
 
-  def date(scope)
-    scope.where(date: params[:date])
+  def dates(scope)
+    scope.where(date: params[:dates])
   end
 
-  def season(scope)
-    scope.where(season: params[:season])
+  def seasons(scope)
+    scope.where(season: params[:seasons])
+  end
+
+  def team_ids(scope)
+    scope.joins(:home_team, :visitor_team).where(
+      'teams.public_id in (?) or visitor_teams_games.public_id in (?)',
+      params[:team_ids],
+      params[:team_ids]
+    )
   end
 end
