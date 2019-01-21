@@ -1,10 +1,10 @@
 class Api::V1::GamesController < ApplicationController
-  DEFAULT_PAGE_SIZE = 25
+  include Pagination
 
   def index
-    games = GameQuery.new(params: params).games
-                     .page(params[:page] || 0)
-                     .per(params[:per_page] || DEFAULT_PAGE_SIZE)
+    games = GameQuery.new(params: clean_params).games
+                     .page(clean_params[:page] || 0)
+                     .per(clean_params[:per_page] || DEFAULT_PAGE_SIZE)
                      .includes(:player_stats, :home_team, :visitor_team)
 
     render json: {
@@ -14,13 +14,13 @@ class Api::V1::GamesController < ApplicationController
 
   private
 
-  def pagination_data(games)
-    {
-      total_pages: games.total_pages,
-      current_page: games.current_page,
-      next_page: games.next_page,
-      per_page: games.limit_value,
-      total_count: games.total_count
-    }
+  def clean_params
+    @clean_params ||= params.permit(
+      :dates,
+      :seasons,
+      :team_ids,
+      :page,
+      :per_page
+    )
   end
 end
