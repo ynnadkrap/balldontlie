@@ -12,6 +12,12 @@ class Api::V1::GamesController < ApplicationController
     }.merge(pagination_data(games))
   end
 
+  def show
+    game = Game.find_by(public_id: params[:id])
+
+    render json: GameSerializer.render(game, view: :expanded)
+  end
+
   private
 
   def clean_params
