@@ -9,11 +9,13 @@ describe Api::V1::PlayersController, type: :controller do
 
       res = JSON.parse(response.body).with_indifferent_access
       expect(res[:data].count).to eq 10
-      expect(res[:total_pages]).to eq 2
-      expect(res[:current_page]).to eq 1
-      expect(res[:next_page]).to eq 2
-      expect(res[:per_page]).to eq 10
-      expect(res[:total_count]).to eq 11
+
+      meta = res[:meta]
+      expect(meta[:total_pages]).to eq 2
+      expect(meta[:current_page]).to eq 1
+      expect(meta[:next_page]).to eq 2
+      expect(meta[:per_page]).to eq 10
+      expect(meta[:total_count]).to eq 11
     end
   end
 
