@@ -12,6 +12,8 @@ class PlayerSerializer < Blueprinter::Base
   end
 
   view :slim do
-    fields :team_id
+    field :team_id do |object|
+      object.team.public_id
+    end
   end
 end

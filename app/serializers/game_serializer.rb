@@ -1,5 +1,7 @@
 class GameSerializer < Blueprinter::Base
-  identifier :id
+  identifier :id do |object|
+    object.public_id
+  end
 
   fields :date, :season
 
@@ -29,6 +31,12 @@ class GameSerializer < Blueprinter::Base
   end
 
   view :slim do
-    fields :home_team_id, :visitor_team_id
+    field :home_team_id do |object|
+      object.home_team.public_id
+    end
+
+    field :visitor_team_id do |object|
+      object.visitor_team.public_id
+    end
   end
 end

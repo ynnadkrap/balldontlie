@@ -6,6 +6,7 @@ describe GameSerializer do
   let!(:game) do
     instance_double(Game,
                     id: 1,
+                    public_id: 99,
                     date: Date.new(2019, 1, 1),
                     season: 2019,
                     home_team: build(:team_west),
@@ -23,7 +24,7 @@ describe GameSerializer do
     it 'serializes correctly' do
       res = JSON.parse(GameSerializer.render(game, view: :expanded)).with_indifferent_access
 
-      expect(res[:id]).to eq 1
+      expect(res[:id]).to eq game.public_id
       expect(res[:date]).to eq '2019-01-01'
       expect(res[:season]).to eq 2019
       expect(res[:home_team_score]).to eq 30
@@ -39,15 +40,15 @@ describe GameSerializer do
     it 'serializes correctly' do
       res = JSON.parse(GameSerializer.render(game, view: :slim)).with_indifferent_access
 
-      expect(res[:id]).to eq 1
+      expect(res[:id]).to eq game.public_id
       expect(res[:date]).to eq '2019-01-01'
       expect(res[:season]).to eq 2019
       expect(res[:home_team_score]).to eq 30
       expect(res[:visitor_team_score]).to eq 1
       expect(res[:home_team]).to be_nil
       expect(res[:visitor_team]).to be_nil
-      expect(res[:home_team_id]).to eq game.home_team_id
-      expect(res[:visitor_team_id]).to eq game.visitor_team_id
+      expect(res[:home_team_id]).to eq game.home_team.public_id
+      expect(res[:visitor_team_id]).to eq game.visitor_team.public_id
     end
   end
 end

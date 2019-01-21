@@ -1,5 +1,7 @@
 class TeamSerializer < Blueprinter::Base
-  identifier :id
+  identifier :id do |object|
+    object.public_id
+  end
 
   fields :conference,
     :division,
