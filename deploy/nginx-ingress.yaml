@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: balldontlie-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
+    certmanager.k8s.io/acme-challenge-type: http01
+spec:
+  tls:
+  - hosts:
+    - www.balldontlie.io
+    secretName: balldontlie-tls
+  rules:
+  - host: www.balldontlie.io
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: balldontlie
+            servicePort: 80

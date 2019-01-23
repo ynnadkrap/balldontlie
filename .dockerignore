@@ -1,0 +1,4 @@
+spec/**/*
+tmp
+log
+.rspec

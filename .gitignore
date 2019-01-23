@@ -20,3 +20,5 @@
 
 *.swp
 *.swo
+
+deploy/secrets/

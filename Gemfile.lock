@@ -39,7 +39,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (8.0.0)
-    blueprinter (0.9.0)
+    blueprinter (0.11.0)
     builder (3.2.3)
     byebug (10.0.2)
     coderay (1.1.2)
@@ -55,7 +55,7 @@ GEM
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.5.1)
+    i18n (1.5.3)
       concurrent-ruby (~> 1.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -83,7 +83,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     nio4r (2.3.1)
-    nokogiri (1.10.0)
+    nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
     pg (0.21.0)
     pry (0.12.2)
@@ -133,7 +133,7 @@ GEM
     rspec-mocks (3.8.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
-    rspec-rails (3.8.1)
+    rspec-rails (3.8.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -183,4 +183,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   2.0.1
+   1.15.4
