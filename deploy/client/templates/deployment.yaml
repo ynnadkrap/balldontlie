@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: balldontlie-client
+  labels:
+    app: balldontlie
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: balldontlie-client
+  template:
+    metadata:
+      labels:
+        app: balldontlie-client
+    spec:
+      containers:
+      - name: balldontlie-client
+        image: gcr.io/balldontlie/client:0.1
+        ports:
+        - name: http-server
+          containerPort: 8080

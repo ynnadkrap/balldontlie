@@ -15,7 +15,11 @@ spec:
   - host: www.balldontlie.io
     http:
       paths:
-        - path: /
+        - path: /api
           backend:
             serviceName: balldontlie
             servicePort: 80
+        - path: /
+          backend:
+            serviceName: balldontlie-client
+            servicePort: 8080
