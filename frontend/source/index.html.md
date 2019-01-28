@@ -3,13 +3,6 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -19,221 +12,383 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the balldontlie API!
+You can use our free API to access NBA related data.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We created this because we were frustrated by the lack of free, quality NBA APIs, and we want to empower the basketball community to build cool things.
+We don't require an API key and there are no rate restrictions, but please try not to spam us to death.
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+We hope to build upon this initial release with input from users. If you have any requests, comments, or questions, please
+feel free to email us at hello@balldontlie.io.
 
-# Authentication
+Also, here's our Patreon in case you want to support us.
 
-> To authorize, use this code:
+## Getting Started
+You need a computer with internet connection.
 
-```ruby
-require 'kittn'
+* no email required
+* no API key required
+* contains data from 1980-current
+* game stats are available about 1 hour after completion
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+# Players
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
+## Get All Players
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+curl "https://www.balldontlie.io/api/v1/players"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+{
+  "data": [
+    {
+      "id": 1,
+      "first_name": "LeBron",
+      "last_name": "James",
+      "position": "G",
+      "team": {
+        "id": 1,
+        "conference": "West",
+        "division": "Pacific",
+        "city": "Los Angeles",
+        "abbreviation": "LAL",
+        "name": "Lakers",
+        "full_name": "Los Angeles Lakers"
+      }
+    },
+    ...
+  ],
+  "meta": {
+    "total_pages": 50,
+    "current_page": 1,
+    "next_page": 2,
+    "per_page": 25,
+    "total_count": 9999
   }
-]
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all players from all seasons.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://www.balldontlie.io/api/v1/players`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+page | 0 | The page number, used for pagination.
+per_page | 25 | The number of results returned per call, used for pagination.
+search | | Used to filter players based on their name. For example, `?search=davis` will return players that have 'davis' in their first or last name.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Get a Specific Player
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl "https://www.balldontlie.io/api/v1/players/1"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "id": 1,
+  "first_name": "LeBron",
+  "last_name": "James",
+  "position": "G",
+  "team": {
+    "id": 1,
+    "conference": "West",
+    "division": "Pacific",
+    "city": "Los Angeles",
+    "abbreviation": "LAL",
+    "name": "Lakers",
+    "full_name": "Los Angeles Lakers"
+  }
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint retrieves a specific player.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://www.balldontlie.io/api/v1/players/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+ID | The ID of the player to retrieve
 
-## Delete a Specific Kitten
+# Teams
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
+## Get All Teams
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+curl "https://www.balldontlie.io/api/v1/teams"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "data": [
+    {
+      "id": 1,
+      "conference": "West",
+      "division": "Pacific",
+      "city": "Los Angeles",
+      "abbreviation": "LAL",
+      "name": "Lakers",
+      "full_name": "Los Angeles Lakers"
+    },
+    ...
+  ],
+  "meta": {
+    "total_pages": 1,
+    "current_page": 1,
+    "next_page": null,
+    "per_page": 30,
+    "total_count": 30
+  }
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint retrieves all teams for the current season.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://www.balldontlie.io/api/v1/teams`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+page | 0 | The page number, used for pagination.
+per_page | 30 | The number of results returned per call, used for pagination.
+
+## Get a Specific Team
+
+```shell
+curl "https://www.balldontlie.io/api/v1/teams/1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 1,
+  "conference": "West",
+  "division": "Pacific",
+  "city": "Los Angeles",
+  "abbreviation": "LAL",
+  "name": "Lakers",
+  "full_name": "Los Angeles Lakers"
+}
+```
+
+This endpoint retrieves a specific team.
+
+### HTTP Request
+
+`GET https://www.balldontlie.io/api/v1/teams/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+ID | The ID of the team to retrieve
 
+# Games
+
+## Get All Games
+```shell
+curl "https://www.balldontlie.io/api/v1/games"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "date": "2019-01-22",
+      "season": 2018,
+      "home_team_score": 99,
+      "visitor_team_score": 90,
+      "home_team": {
+        "id": 1,
+        "conference": "West",
+        "division": "Pacific",
+        "city": "Los Angeles",
+        "abbreviation": "LAL",
+        "name": "Lakers",
+        "full_name": "Los Angeles Lakers"
+      },
+      "visitor_team": {
+        "id": 2,
+        "conference": "West",
+        "division": "Pacific",
+        "city": "Los Angeles",
+        "abbreviation": "LAC",
+        "name": "Clippers",
+        "full_name": "Los Angeles Clippers"
+      }
+    },
+    ...
+  ],
+  "meta": {
+    "total_pages": 9999,
+    "current_page": 1,
+    "next_page": 2,
+    "per_page": 25,
+    "total_count": 99999
+  }
+}
+```
+
+This endpoint retrieves all games. We don't support live data. Games will be posted within 1 hour of their completion.
+
+Seasons are represented by the year they began. For example, 2018 represents season 2018-2019.
+
+### HTTP Request
+
+`GET https://www.balldontlie.io/api/v1/games`
+
+### Query Parameters
+
+Combining multiple query parameters is the same as applying `&` boolean logic. For example, `?seasons[]=2018&team_ids[]=1` will return games played by team_id 1 for the 2018-2019 season.
+
+Parameter | Default | Description
+--------- | ------- | -----------
+page | 0 | The page number, used for pagination.
+per_page | 25 | The number of results returned per call, used for pagination.
+dates | | An array of dates formatted in 'YYYY-MM-DD'
+seasons | | An array of seasons
+team_ids | | An array of team_ids
+
+## Get a Specific Game
+
+```shell
+curl "https://www.balldontlie.io/api/v1/games/1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 1,
+  "date": "2019-01-22",
+  "season": 2018,
+  "home_team_score": 99,
+  "visitor_team_score": 90,
+  "home_team": {
+    "id": 1,
+    "conference": "West",
+    "division": "Pacific",
+    "city": "Los Angeles",
+    "abbreviation": "LAL",
+    "name": "Lakers",
+    "full_name": "Los Angeles Lakers"
+  },
+  "visitor_team": {
+    "id": 2,
+    "conference": "West",
+    "division": "Pacific",
+    "city": "Los Angeles",
+    "abbreviation": "LAC",
+    "name": "Clippers",
+    "full_name": "Los Angeles Clippers"
+  }
+}
+```
+
+This endpoint retrieves a specific game.
+
+### HTTP Request
+
+`GET https://www.balldontlie.io/api/v1/games/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the game to retrieve
+
+# Stats
+
+## Get All Stats
+```shell
+curl "https://www.balldontlie.io/api/v1/stats"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "min": "42:23",
+      "fgm": 10,
+      "fga": 20,
+      "fg_pct": 0.50,
+      "fg3m": 2,
+      "fg3a": 4,
+      "fg3_pct": 0.50,
+      "ftm": 3,
+      "fta": 3,
+      "ft_pct": 1,
+      "oreb": 0,
+      "dreb": 4,
+      "reb": 4,
+      "ast": 10,
+      "stl": 4,
+      "blk": 1,
+      "turnover": 4,
+      "pf": 1,
+      "pts": 30,
+      "player": {
+        "id": 1,
+        "first_name": "LeBron",
+        "last_name": "James",
+        "position": "G",
+        "team_id": 1
+      },
+      "game": {
+      },
+      "team": {
+      }
+    },
+    ...
+  ],
+  "meta": {
+    "total_pages": 9999,
+    "current_page": 1,
+    "next_page": 2,
+    "per_page": 25,
+    "total_count": 99999
+  }
+}
+```
+
+This endpoint retrieves all stats.
+
+### HTTP Request
+
+`GET https://www.balldontlie.io/api/v1/stats`
+
+### Query Parameters
+
+Combining multiple query parameters is the same as applying `&` boolean logic. For example, `?seasons[]=2018&player_ids[]=1&player_ids[]=2` will return stats for player_ids 1 and 2 for the 2018-2019 season.
+
+Parameter | Default | Description
+--------- | ------- | -----------
+page | 0 | The page number, used for pagination.
+per_page | 25 | The number of results returned per call, used for pagination.
+dates | | An array of dates formatted in 'YYYY-MM-DD'
+seasons | | An array of seasons
+player_ids | | An array of player_ids
+game_ids | | An array of game_ids
