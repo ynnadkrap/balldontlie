@@ -3,18 +3,18 @@ class GameQuery
 
   def initialize(params: {})
     @params = {
-      dates: [],
-      seasons: [],
-      team_ids: []
+      'dates' => [],
+      'seasons' => [],
+      'team_ids' => []
     }.merge(params)
   end
 
   def games
     scope = Game.all
 
-    scope = dates(scope) if params[:dates].any?
-    scope = seasons(scope) if params[:seasons].any?
-    scope = team_ids(scope) if params[:team_ids].any?
+    scope = dates(scope) if params['dates'].any?
+    scope = seasons(scope) if params['seasons'].any?
+    scope = team_ids(scope) if params['team_ids'].any?
 
     scope
   end
@@ -22,18 +22,18 @@ class GameQuery
   private
 
   def dates(scope)
-    scope.where(date: params[:dates])
+    scope.where(date: params['dates'])
   end
 
   def seasons(scope)
-    scope.where(season: params[:seasons])
+    scope.where(season: params['seasons'])
   end
 
   def team_ids(scope)
     scope.joins(:home_team, :visitor_team).where(
       'teams.public_id in (?) or visitor_teams_games.public_id in (?)',
-      params[:team_ids],
-      params[:team_ids]
+      params['team_ids'],
+      params['team_ids']
     )
   end
 end

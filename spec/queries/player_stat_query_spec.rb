@@ -19,7 +19,7 @@ describe PlayerStatQuery do
     let!(:player_stat_3) { create(:player_stat, player: player_2) }
     let!(:player_stat_4) { create(:player_stat, player: player_3) }
 
-    let!(:params) { { player_ids: [player_1.public_id, player_2.public_id] } }
+    let!(:params) { { 'player_ids' => [player_1.public_id, player_2.public_id] } }
 
     it 'returns stats for the specified players' do
       res = PlayerStatQuery.new(params: params).player_stats
@@ -42,7 +42,7 @@ describe PlayerStatQuery do
     let!(:player_stat_3) { create(:player_stat, game: game_2) }
     let!(:player_stat_4) { create(:player_stat, game: game_3) }
 
-    let!(:params) { { game_ids: [game_1.public_id, game_2.public_id] } }
+    let!(:params) { { 'game_ids' => [game_1.public_id, game_2.public_id] } }
 
     it 'returns stats for the specified games' do
       res = PlayerStatQuery.new(params: params).player_stats
@@ -65,7 +65,7 @@ describe PlayerStatQuery do
     let!(:player_stat_3) { create(:player_stat, game: game_2) }
     let!(:player_stat_4) { create(:player_stat, game: game_3) }
 
-    let!(:params) { { seasons: [2017, 2018] } }
+    let!(:params) { { 'seasons' => [2017, 2018] } }
 
     it 'returns stats for the specified seasons' do
       res = PlayerStatQuery.new(params: params).player_stats
@@ -88,7 +88,7 @@ describe PlayerStatQuery do
     let!(:player_stat_3) { create(:player_stat, game: game_2) }
     let!(:player_stat_4) { create(:player_stat, game: game_3) }
 
-    let!(:params) { { dates: ['2019-01-02', '2019-01-03'] } }
+    let!(:params) { { 'dates' => ['2019-01-02', '2019-01-03'] } }
 
     it 'returns stats for the specified dates' do
       res = PlayerStatQuery.new(params: params).player_stats
@@ -109,12 +109,14 @@ describe PlayerStatQuery do
     let!(:game_1) { create(:game, season: 2019) }
     let!(:game_2) { create(:game, season: 2019) }
     let!(:game_3) { create(:game, season: 2019) }
+    let!(:game_4) { create(:game, season: 2018) }
 
     let!(:player_stat_1) { create(:player_stat, game: game_1, player: player_1) }
     let!(:player_stat_2) { create(:player_stat, game: game_2, player: player_2) }
     let!(:player_stat_3) { create(:player_stat, game: game_3, player: player_3) }
+    let!(:player_stat_4) { create(:player_stat, game: game_4, player: player_1) }
 
-    let!(:params) { { player_ids: [player_1.public_id, player_2.public_id], seasons: [2019] } }
+    let!(:params) { { 'player_ids' => [player_1.public_id, player_2.public_id], 'seasons' => [2019] } }
 
     it 'returns the correct stats' do
       res = PlayerStatQuery.new(params: params).player_stats

@@ -22,11 +22,11 @@ class Api::V1::GamesController < ApplicationController
 
   def clean_params
     @clean_params ||= params.permit(
-      :dates,
-      :seasons,
-      :team_ids,
       :page,
-      :per_page
+      :per_page,
+      dates: [],
+      seasons: [],
+      team_ids: []
     )
   end
 end

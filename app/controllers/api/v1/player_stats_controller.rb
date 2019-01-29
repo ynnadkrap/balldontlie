@@ -16,12 +16,12 @@ class Api::V1::PlayerStatsController < ApplicationController
 
   def clean_params
     @clean_params ||= params.permit(
-      :player_ids,
-      :game_ids,
-      :seasons,
-      :dates,
       :page,
-      :per_page
+      :per_page,
+      player_ids: [],
+      game_ids: [],
+      seasons: [],
+      dates: []
     )
   end
 end

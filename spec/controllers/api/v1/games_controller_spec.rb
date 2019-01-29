@@ -1,8 +1,12 @@
 describe Api::V1::GamesController, type: :controller do
   describe '#index' do
-    let!(:games) { create_list(:game, 20) }
+    let!(:team_1) { create(:team) }
+    let!(:team_2) { create(:team) }
 
-    before { get :index, params: { per_page: 10, page: 0 } }
+    let!(:games_team_1) { create_list(:game, 10, home_team: team_1) }
+    let!(:games_team_2) { create(:game, home_team: team_2) }
+
+    before { get :index, params: { per_page: 10, page: 0, team_ids: [team_1.public_id] } }
 
     it 'succeeds' do
       expect(response.status).to eq 200
@@ -11,11 +15,11 @@ describe Api::V1::GamesController, type: :controller do
       expect(res[:data].count).to eq 10
 
       meta = res[:meta]
-      expect(meta[:total_pages]).to eq 2
+      expect(meta[:total_pages]).to eq 1
       expect(meta[:current_page]).to eq 1
-      expect(meta[:next_page]).to eq 2
+      expect(meta[:next_page]).to be_nil
       expect(meta[:per_page]).to eq 10
-      expect(meta[:total_count]).to eq 20
+      expect(meta[:total_count]).to eq 10
     end
   end
 
