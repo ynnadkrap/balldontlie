@@ -8,7 +8,7 @@ class GameSerializer < Blueprinter::Base
   field :home_team_score do |game|
     game.player_stats.reduce(0) do |acc, stat|
       if stat.team_id == game.home_team_id
-        acc + stat.pts
+        acc + stat.pts.to_i
       else
         acc
       end
@@ -18,7 +18,7 @@ class GameSerializer < Blueprinter::Base
   field :visitor_team_score do |game|
     game.player_stats.reduce(0) do |acc, stat|
       if stat.team_id == game.visitor_team_id
-        acc + stat.pts
+        acc + stat.pts.to_i
       else
         acc
       end
