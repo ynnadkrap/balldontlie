@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: balldontlie-client
-        image: gcr.io/balldontlie/client:0.1
+        image: gcr.io/balldontlie/client:0.2
         ports:
         - name: http-server
           containerPort: 8080
