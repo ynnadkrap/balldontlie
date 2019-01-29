@@ -13,7 +13,7 @@ class Api::V1::PlayersController < ApplicationController
   end
 
   def show
-    player = Player.find_by(public_id: params[:id])
+    player = Player.find_by!(public_id: params[:id])
 
     render json: PlayerSerializer.render(player, view: :expanded)
   end

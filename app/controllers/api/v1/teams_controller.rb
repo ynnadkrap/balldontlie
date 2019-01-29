@@ -12,7 +12,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   def show
-    team = Team.find_by(public_id: params[:id])
+    team = Team.find_by!(public_id: params[:id])
 
     render json: team
   end

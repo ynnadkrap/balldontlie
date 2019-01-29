@@ -13,7 +13,7 @@ class Api::V1::GamesController < ApplicationController
   end
 
   def show
-    game = Game.find_by(public_id: params[:id])
+    game = Game.find_by!(public_id: params[:id])
 
     render json: GameSerializer.render(game, view: :expanded)
   end
