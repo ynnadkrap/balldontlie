@@ -13,22 +13,26 @@ search: true
 # Introduction
 
 Welcome to the balldontlie API!
+
 You can use our free API to access NBA related data.
 
-We created this because we were frustrated by the lack of free, quality NBA APIs, and we want to empower the basketball community to build cool things.
-We don't require an API key and there are no rate restrictions, but please try not to spam us to death.
+We were frustrated by the lack of free basketball APIs, so we decided to build this. In doing so we hope the basketball community can build some cool things.
+
+We don't require an API key and there are no rate restrictions. If your sole purpose is to scrape all of the data, reach out to us instead of bombarding our servers. We'll probably just give it to you for free if you ask nicely.
+
+Each section has some considerations (read: limitations) that are worth noting.
 
 We hope to build upon this initial release with input from users. If you have any requests, comments, or questions, please
 feel free to email us at hello@balldontlie.io.
 
-Also, here's our Patreon in case you want to support us.
+Also, please feel free to [donate](https://www.patreon.com/balldontlie) to help keep the lights on.
 
 ## Getting Started
 You need a computer with internet connection.
 
 * no email required
 * no API key required
-* contains data from 1980-current
+* contains data from 1979-1980 season to current
 * game stats are available about 1 hour after completion
 
 # Players
@@ -42,25 +46,25 @@ curl "https://www.balldontlie.io/api/v1/players"
 
 ```json
 {
-  "data": [
+  "data":[
     {
-      "id": 1,
-      "first_name": "LeBron",
-      "last_name": "James",
-      "position": "G",
-      "team": {
-        "id": 1,
-        "conference": "West",
-        "division": "Pacific",
-        "city": "Los Angeles",
-        "abbreviation": "LAL",
-        "name": "Lakers",
-        "full_name": "Los Angeles Lakers"
+      "id":237,
+      "first_name":"LeBron",
+      "last_name":"James",
+      "position":"F",
+      "team":{
+        "id":14,
+        "abbreviation":"LAL",
+        "city":"Los Angeles",
+        "conference":"West",
+        "division":"Pacific",
+        "full_name":"Los Angeles Lakers",
+        "name":"Lakers"
       }
-    },
+    }
     ...
-  ],
-  "meta": {
+ ],
+ "meta": {
     "total_pages": 50,
     "current_page": 1,
     "next_page": 2,
@@ -87,25 +91,27 @@ search | | Used to filter players based on their name. For example, `?search=dav
 ## Get a Specific Player
 
 ```shell
-curl "https://www.balldontlie.io/api/v1/players/1"
+curl "https://www.balldontlie.io/api/v1/players/237"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 1,
-  "first_name": "LeBron",
-  "last_name": "James",
-  "position": "G",
-  "team": {
-    "id": 1,
-    "conference": "West",
-    "division": "Pacific",
-    "city": "Los Angeles",
-    "abbreviation": "LAL",
-    "name": "Lakers",
-    "full_name": "Los Angeles Lakers"
+  {
+    "id":237,
+    "first_name":"LeBron",
+    "last_name":"James",
+    "position":"F",
+    "team":{
+      "id":14,
+      "abbreviation":"LAL",
+      "city":"Los Angeles",
+      "conference":"West",
+      "division":"Pacific",
+      "full_name":"Los Angeles Lakers",
+      "name":"Lakers"
+    }
   }
 }
 ```
@@ -135,13 +141,13 @@ curl "https://www.balldontlie.io/api/v1/teams"
 {
   "data": [
     {
-      "id": 1,
-      "conference": "West",
-      "division": "Pacific",
-      "city": "Los Angeles",
-      "abbreviation": "LAL",
-      "name": "Lakers",
-      "full_name": "Los Angeles Lakers"
+      "id":14,
+      "abbreviation":"LAL",
+      "city":"Los Angeles",
+      "conference":"West",
+      "division":"Pacific",
+      "full_name":"Los Angeles Lakers",
+      "name":"Lakers"
     },
     ...
   ],
@@ -171,20 +177,20 @@ per_page | 30 | The number of results returned per call, used for pagination.
 ## Get a Specific Team
 
 ```shell
-curl "https://www.balldontlie.io/api/v1/teams/1"
+curl "https://www.balldontlie.io/api/v1/teams/14"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 1,
-  "conference": "West",
-  "division": "Pacific",
-  "city": "Los Angeles",
-  "abbreviation": "LAL",
-  "name": "Lakers",
-  "full_name": "Los Angeles Lakers"
+  "id":14,
+  "abbreviation":"LAL",
+  "city":"Los Angeles",
+  "conference":"West",
+  "division":"Pacific",
+  "full_name":"Los Angeles Lakers",
+  "name":"Lakers"
 }
 ```
 
@@ -200,6 +206,10 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the team to retrieve
 
+## Considerations
+
+<aside class="warning">We only contain information on current NBA teams.</aside>
+
 # Games
 
 ## Get All Games
@@ -213,43 +223,43 @@ curl "https://www.balldontlie.io/api/v1/games"
 {
   "data": [
     {
-      "id": 1,
-      "date": "2019-01-22",
-      "season": 2018,
-      "home_team_score": 99,
-      "visitor_team_score": 90,
-      "home_team": {
-        "id": 1,
-        "conference": "West",
-        "division": "Pacific",
-        "city": "Los Angeles",
-        "abbreviation": "LAL",
-        "name": "Lakers",
-        "full_name": "Los Angeles Lakers"
+      "id":1,
+      "date":"2018-10-16T00:00:00.000Z",
+      "home_team_score":105,
+      "visitor_team_score":87,
+      "season":2018,
+      "home_team":{
+        "id":2,
+        "abbreviation":"BOS",
+        "city":"Boston",
+        "conference":"East",
+        "division":"Atlantic",
+        "full_name":"Boston Celtics",
+        "name":"Celtics"
       },
-      "visitor_team": {
-        "id": 2,
-        "conference": "West",
-        "division": "Pacific",
-        "city": "Los Angeles",
-        "abbreviation": "LAC",
-        "name": "Clippers",
-        "full_name": "Los Angeles Clippers"
-      }
+      "visitor_team":{
+        "id":23,
+        "abbreviation":"PHI",
+        "city":"Philadelphia",
+        "conference":"East",
+        "division":"Atlantic",
+        "full_name":"Philadelphia 76ers",
+        "name":"76ers"
+      },
     },
     ...
   ],
   "meta": {
-    "total_pages": 9999,
+    "total_pages": 1877,
     "current_page": 1,
     "next_page": 2,
     "per_page": 25,
-    "total_count": 99999
+    "total_count": 46911
   }
 }
 ```
 
-This endpoint retrieves all games. We don't support live data. Games will be posted within 1 hour of their completion.
+This endpoint retrieves all games.
 
 Seasons are represented by the year they began. For example, 2018 represents season 2018-2019.
 
@@ -259,7 +269,7 @@ Seasons are represented by the year they began. For example, 2018 represents sea
 
 ### Query Parameters
 
-Combining multiple query parameters is the same as applying `&` boolean logic. For example, `?seasons[]=2018&team_ids[]=1` will return games played by team_id 1 for the 2018-2019 season.
+You can combine query parameters. For example: `?seasons[]=2018&team_ids[]=1` will returns games for team_id 1 for the 2018-2019 season.
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -279,28 +289,30 @@ curl "https://www.balldontlie.io/api/v1/games/1"
 
 ```json
 {
-  "id": 1,
-  "date": "2019-01-22",
-  "season": 2018,
-  "home_team_score": 99,
-  "visitor_team_score": 90,
-  "home_team": {
-    "id": 1,
-    "conference": "West",
-    "division": "Pacific",
-    "city": "Los Angeles",
-    "abbreviation": "LAL",
-    "name": "Lakers",
-    "full_name": "Los Angeles Lakers"
-  },
-  "visitor_team": {
-    "id": 2,
-    "conference": "West",
-    "division": "Pacific",
-    "city": "Los Angeles",
-    "abbreviation": "LAC",
-    "name": "Clippers",
-    "full_name": "Los Angeles Clippers"
+  {
+    "id":1,
+    "date":"2018-10-16T00:00:00.000Z",
+    "home_team_score":105,
+    "visitor_team_score":87,
+    "season":2018,
+    "home_team":{
+      "id":2,
+      "abbreviation":"BOS",
+      "city":"Boston",
+      "conference":"East",
+      "division":"Atlantic",
+      "full_name":"Boston Celtics",
+      "name":"Celtics"
+    },
+    "visitor_team":{
+      "id":23,
+      "abbreviation":"PHI",
+      "city":"Philadelphia",
+      "conference":"East",
+      "division":"Atlantic",
+      "full_name":"Philadelphia 76ers",
+      "name":"76ers"
+    },
   }
 }
 ```
@@ -317,6 +329,13 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the game to retrieve
 
+## Considerations
+
+<aside class="warning">Playoff games are included in the data set. There is currently no attribute that indicates whether a game is for regular or post season. Pre-season games are not included.</aside>
+
+<aside class="warning">We don't support live data. Games will be posted within 1 hour of their completion.</aside>
+
+
 # Stats
 
 ## Get All Stats
@@ -330,46 +349,60 @@ curl "https://www.balldontlie.io/api/v1/stats"
 {
   "data": [
     {
-      "id": 1,
-      "min": "42:23",
-      "fgm": 10,
-      "fga": 20,
-      "fg_pct": 0.50,
-      "fg3m": 2,
-      "fg3a": 4,
-      "fg3_pct": 0.50,
-      "ftm": 3,
-      "fta": 3,
-      "ft_pct": 1,
-      "oreb": 0,
-      "dreb": 4,
-      "reb": 4,
-      "ast": 10,
-      "stl": 4,
-      "blk": 1,
-      "turnover": 4,
-      "pf": 1,
-      "pts": 30,
-      "player": {
-        "id": 1,
-        "first_name": "LeBron",
-        "last_name": "James",
-        "position": "G",
-        "team_id": 1
+      "id":29,
+      "ast":2,
+      "blk":2,
+      "dreb":8,
+      "fg3_pct":0.25,
+      "fg3a":4,
+      "fg3m":1,
+      "fg_pct":0.429,
+      "fga":21,
+      "fgm":9,
+      "ft_pct":0.8,
+      "fta":5,
+      "ftm":4,
+      "game":{
+        "id":1,
+        "date":"2018-10-16T00:00:00.000Z",
+        "home_team_id":2,
+        "home_team_score":105,
+        "season":2018,
+        "visitor_team_id":23,
+        "visitor_team_score":87
       },
-      "game": {
+      "min":"36:49",
+      "oreb":2,
+      "pf":3,
+      "player":{
+        "id":145,
+        "first_name":"Joel",
+        "last_name":"Embiid",
+        "position":"F-C",
+        "team_id":23
       },
-      "team": {
-      }
+      "pts":23,
+      "reb":10,
+      "stl":1,
+      "team":{
+        "id":23,
+        "abbreviation":"PHI",
+        "city":"Philadelphia",
+        "conference":"East",
+        "division":"Atlantic",
+        "full_name":"Philadelphia 76ers",
+        "name":"76ers"
+      },
+      "turnover":5
     },
     ...
   ],
   "meta": {
-    "total_pages": 9999,
+    "total_pages": 2042,
     "current_page": 1,
     "next_page": 2,
     "per_page": 25,
-    "total_count": 99999
+    "total_count": 51045
   }
 }
 ```
@@ -382,7 +415,7 @@ This endpoint retrieves all stats.
 
 ### Query Parameters
 
-Combining multiple query parameters is the same as applying `&` boolean logic. For example, `?seasons[]=2018&player_ids[]=1&player_ids[]=2` will return stats for player_ids 1 and 2 for the 2018-2019 season.
+You can combine query parameters. For example: `?seasons[]=2018&seasons[]=2015&player_ids[]=1&player_ids[]=2` will returns stats for player_ids 1 and 2 for the 2015-2016 and 2018-2019 season.
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -392,3 +425,9 @@ dates | | An array of dates formatted in 'YYYY-MM-DD'
 seasons | | An array of seasons
 player_ids | | An array of player_ids
 game_ids | | An array of game_ids
+
+## Considerations
+
+<aside class="warning">Some records may come back with <code>min: '0'</code> despite not being true.</aside>
+
+<aside class="warning">We don't support live data. Stats will be posted within 1 hour of game completion.</aside>
