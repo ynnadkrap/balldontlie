@@ -143,6 +143,10 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
+    skylight (3.1.4)
+      skylight-core (= 3.1.4)
+    skylight-core (3.1.4)
+      activesupport (>= 4.2.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -178,9 +182,10 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.4)
   rspec-rails
+  skylight
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
 
 BUNDLED WITH
-   1.15.4
+   1.17.1
