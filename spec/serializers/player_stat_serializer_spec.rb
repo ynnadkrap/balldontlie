@@ -1,7 +1,7 @@
 describe PlayerStatSerializer do
-  let!(:game) { Game.new }
-  let!(:player) { Player.new }
-  let!(:team) { Team.new }
+  let!(:game) { build(:game) }
+  let!(:player) { build(:player) }
+  let!(:team) { build(:team) }
   let!(:player_stat) { build(:player_stat, game: game, player: player, team: team) }
 
   context 'when expanded' do

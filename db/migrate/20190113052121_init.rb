@@ -12,12 +12,12 @@ class Init < ActiveRecord::Migration[5.1]
     create_table :games do |t|
       t.date :date, null: false
       t.bigint :home_team_id, index: true, null: false
-      t.bigint :away_team_id, index: true, null: false
+      t.bigint :visitor_team_id, index: true, null: false
       t.integer :season, null: false
     end
 
     add_foreign_key :games, :teams, column: :home_team_id
-    add_foreign_key :games, :teams, column: :away_team_id
+    add_foreign_key :games, :teams, column: :visitor_team_id
 
     create_table :players do |t|
       t.text :first_name, null: false
