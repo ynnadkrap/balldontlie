@@ -35,6 +35,7 @@ group :development, :test do
   gem "factory_bot_rails", "~> 4.0"
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'rspec_junit_formatter'
 end
 
 group :development do
