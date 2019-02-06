@@ -53,4 +53,15 @@ describe GameSerializer do
       expect(res[:visitor_team_id]).to eq game.visitor_team.public_id
     end
   end
+
+  context 'when game has no player_stats' do
+    let!(:game) { create(:game) }
+
+    it 'returns 0 for both scores' do
+      res = JSON.parse(GameSerializer.render(game, view: :slim)).with_indifferent_access
+
+      expect(res[:home_team_score]).to eq 0
+      expect(res[:visitor_team_score]).to eq 0
+    end
+  end
 end
