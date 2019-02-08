@@ -13,6 +13,9 @@ describe GameSerializer do
                     home_team: build(:team_west),
                     visitor_team: build(:team_east),
                     home_team_id: 1,
+                    status: "Final",
+                    period: 4,
+                    time: " ",
                     visitor_team_id: 2,
                     player_stats: [
                       home_player_stat_1,
@@ -35,6 +38,9 @@ describe GameSerializer do
       expect(res[:visitor_team]).to_not be_nil
       expect(res[:home_team_id]).to be_nil
       expect(res[:visitor_team_id]).to be_nil
+      expect(res[:status]).to eq "Final"
+      expect(res[:period]).to eq 4
+      expect(res[:time]).to eq " "
     end
   end
 
@@ -51,6 +57,9 @@ describe GameSerializer do
       expect(res[:visitor_team]).to be_nil
       expect(res[:home_team_id]).to eq game.home_team.public_id
       expect(res[:visitor_team_id]).to eq game.visitor_team.public_id
+      expect(res[:status]).to eq "Final"
+      expect(res[:period]).to eq 4
+      expect(res[:time]).to eq " "
     end
   end
 

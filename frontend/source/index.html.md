@@ -33,7 +33,7 @@ You need a computer with internet connection.
 * no email required
 * no API key required
 * contains data from 1979-1980 season to current
-* game stats are available about 1 hour after completion
+* semi-live game stats are available (updated ~10 minutes)
 
 # Players
 
@@ -212,6 +212,15 @@ ID | The ID of the team to retrieve
 
 # Games
 
+## Attributes
+These attributes are worth noting:
+
+Attribute | Type | Values | Notes
+--------- | ---- | ------ | -----------
+period | integer | 0, 1, 2, 3, 4 | 0 will be returned for games that have not started. 4 will be returned when a game is either complete or in the 4th quarter.
+status | string |  `{start_time}`, 1st Quarter, 2nd Quarter, Halftime, 3rd Quarter, 4th Quarter, Final | `{start_time}` looks something like "7:00 pm ET", which indicates that the game has not started yet.
+time | string | `{time_in_period}`, " " | `${time_in_period}` looks something like "3:44". " " is an empty string that is returned when game has not started or is complete.
+
 ## Get All Games
 ```shell
 curl "https://www.balldontlie.io/api/v1/games"
@@ -228,6 +237,9 @@ curl "https://www.balldontlie.io/api/v1/games"
       "home_team_score":105,
       "visitor_team_score":87,
       "season":2018,
+      "period": 4,
+      "status": "Final",
+      "time": " ",
       "home_team":{
         "id":2,
         "abbreviation":"BOS",
@@ -295,6 +307,9 @@ curl "https://www.balldontlie.io/api/v1/games/1"
     "home_team_score":105,
     "visitor_team_score":87,
     "season":2018,
+    "period": 4,
+    "status": "Final",
+    "time": " ",
     "home_team":{
       "id":2,
       "abbreviation":"BOS",
@@ -333,7 +348,7 @@ ID | The ID of the game to retrieve
 
 <aside class="warning">Playoff games are included in the data set. There is currently no attribute that indicates whether a game is for regular or post season. Pre-season games are not included.</aside>
 
-<aside class="warning">We don't support live data. Games will be posted within 1 hour of their completion.</aside>
+<aside class="warning">Games will be updated every ~10 minutes</aside>
 
 
 # Stats
@@ -430,4 +445,4 @@ game_ids | | An array of game_ids
 
 <aside class="warning">Some records may come back with <code>min: '0'</code> despite not being true.</aside>
 
-<aside class="warning">We don't support live data. Stats will be posted within 1 hour of game completion.</aside>
+<aside class="warning">Stats will be updated ~10 minutes</aside>
