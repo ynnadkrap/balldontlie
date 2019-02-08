@@ -35,6 +35,8 @@ You need a computer with internet connection.
 * contains data from 1979-1980 season to current
 * semi-live game stats are available (updated ~10 minutes)
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c51c3810db2ab3ca4ab4)
+
 # Players
 
 ## Get All Players
