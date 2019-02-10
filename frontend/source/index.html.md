@@ -220,7 +220,7 @@ These attributes are worth noting:
 Attribute | Type | Values | Notes
 --------- | ---- | ------ | -----------
 period | integer | 0, 1, 2, 3, 4 | 0 will be returned for games that have not started. 4 will be returned when a game is either complete or in the 4th quarter.
-status | string |  `{start_time}`, 1st Quarter, 2nd Quarter, Halftime, 3rd Quarter, 4th Quarter, Final | `{start_time}` looks something like "7:00 pm ET", which indicates that the game has not started yet.
+status | string |  `{start_time}`, 1st Qtr, 2nd Qtr, Halftime, 3rd Qtr, 4th Qtr, Final | `{start_time}` looks something like "7:00 pm ET", which indicates that the game has not started yet.
 time | string | `{time_in_period}`, " " | `${time_in_period}` looks something like "3:44". " " is an empty string that is returned when game has not started or is complete.
 
 ## Get All Games
@@ -447,4 +447,4 @@ game_ids | | An array of game_ids
 
 <aside class="warning">Some records may come back with <code>min: '0'</code> despite not being true.</aside>
 
-<aside class="warning">Stats will be updated ~10 minutes</aside>
+<aside class="warning">Stats will be updated every ~10 minutes</aside>
