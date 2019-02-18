@@ -6,6 +6,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
     certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
     certmanager.k8s.io/acme-challenge-type: http01
+    nginx.ingress.kubernetes.io/limit-rpm: 60
 spec:
   tls:
   - hosts:
