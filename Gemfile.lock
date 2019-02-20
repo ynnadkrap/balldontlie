@@ -85,6 +85,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     multipart-post (2.0.0)
+    newrelic_rpm (6.0.0.351)
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
@@ -184,6 +185,7 @@ DEPENDENCIES
   factory_bot_rails (~> 4.0)
   kaminari
   listen (>= 3.0.5, < 3.2)
+  newrelic_rpm
   pg (~> 0.18)
   pry-byebug
   pry-rails
