@@ -10,4 +10,4 @@ spec:
   - port: 80
     targetPort: http-server
   selector:
-    app: balldontlie
+    app: balldontlie-api

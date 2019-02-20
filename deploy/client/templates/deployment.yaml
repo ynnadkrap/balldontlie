@@ -4,6 +4,7 @@ metadata:
   name: balldontlie-client
   labels:
     app: balldontlie
+    type: client
 spec:
   replicas: 1
   selector:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
       - name: balldontlie-client
-        image: gcr.io/balldontlie/client:0.7
+        image: gcr.io/balldontlie/client:0.8
         ports:
         - name: http-server
           containerPort: 8080

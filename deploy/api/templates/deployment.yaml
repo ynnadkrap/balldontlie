@@ -1,18 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: balldontlie
+  name: balldontlie-api
   labels:
     app: balldontlie
+    type: api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: balldontlie
+      app: balldontlie-api
   template:
     metadata:
       labels:
-        app: balldontlie
+        app: balldontlie-api
     spec:
       containers:
       - name: balldontlie-api
