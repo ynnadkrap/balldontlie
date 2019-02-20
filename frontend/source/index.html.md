@@ -14,26 +14,23 @@ search: true
 
 Welcome to the balldontlie API!
 
-You can use our free API to access NBA related data.
+You can use our free API to access NBA related data. No email required. No API key required.
 
-We were frustrated by the lack of free basketball APIs, so we decided to build this. In doing so we hope the basketball community can build some cool things.
+Here's an example of something you can build with this API: [example](https://viz.balldontlie.io)
 
-We don't require an API key and there are no rate restrictions. If your sole purpose is to scrape all of the data, reach out to us instead of bombarding our servers. We'll probably just give it to you for free if you ask nicely.
+If your sole purpose is to scrape all the data, please reach out to instead of bombarding our servers. We'll give you the data.
 
-Each section has some considerations (read: limitations) that are worth noting.
-
-We hope to build upon this initial release with input from users. If you have any requests, comments, or questions, please
-feel free to email us at hello@balldontlie.io.
+Email us at hello@balldontlie.io with any comments or questions. We hope to build on top of this first iteration with community input. Please reach out if you want to help.
 
 Also, please feel free to [donate](https://www.patreon.com/balldontlie) to help keep the lights on.
 
 ## Getting Started
 You need a computer with internet connection.
 
-* no email required
-* no API key required
-* contains data from 1979-1980 season to current
-* semi-live game stats are available (updated ~10 minutes)
+* No email required
+* No API key required
+* Contains data from seasons 1979-current
+* Live(ish) game stats are available (updated every ~10 minutes)
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c51c3810db2ab3ca4ab4)
 
@@ -100,20 +97,18 @@ curl "https://www.balldontlie.io/api/v1/players/237"
 
 ```json
 {
-  {
-    "id":237,
-    "first_name":"LeBron",
-    "last_name":"James",
-    "position":"F",
-    "team":{
-      "id":14,
-      "abbreviation":"LAL",
-      "city":"Los Angeles",
-      "conference":"West",
-      "division":"Pacific",
-      "full_name":"Los Angeles Lakers",
-      "name":"Lakers"
-    }
+  "id":237,
+  "first_name":"LeBron",
+  "last_name":"James",
+  "position":"F",
+  "team":{
+    "id":14,
+    "abbreviation":"LAL",
+    "city":"Los Angeles",
+    "conference":"West",
+    "division":"Pacific",
+    "full_name":"Los Angeles Lakers",
+    "name":"Lakers"
   }
 }
 ```
@@ -303,34 +298,32 @@ curl "https://www.balldontlie.io/api/v1/games/1"
 
 ```json
 {
-  {
-    "id":1,
-    "date":"2018-10-16T00:00:00.000Z",
-    "home_team_score":105,
-    "visitor_team_score":87,
-    "season":2018,
-    "period": 4,
-    "status": "Final",
-    "time": " ",
-    "home_team":{
-      "id":2,
-      "abbreviation":"BOS",
-      "city":"Boston",
-      "conference":"East",
-      "division":"Atlantic",
-      "full_name":"Boston Celtics",
-      "name":"Celtics"
-    },
-    "visitor_team":{
-      "id":23,
-      "abbreviation":"PHI",
-      "city":"Philadelphia",
-      "conference":"East",
-      "division":"Atlantic",
-      "full_name":"Philadelphia 76ers",
-      "name":"76ers"
-    },
-  }
+  "id":1,
+  "date":"2018-10-16T00:00:00.000Z",
+  "home_team_score":105,
+  "visitor_team_score":87,
+  "season":2018,
+  "period": 4,
+  "status": "Final",
+  "time": " ",
+  "home_team":{
+    "id":2,
+    "abbreviation":"BOS",
+    "city":"Boston",
+    "conference":"East",
+    "division":"Atlantic",
+    "full_name":"Boston Celtics",
+    "name":"Celtics"
+  },
+  "visitor_team":{
+    "id":23,
+    "abbreviation":"PHI",
+    "city":"Philadelphia",
+    "conference":"East",
+    "division":"Atlantic",
+    "full_name":"Philadelphia 76ers",
+    "name":"76ers"
+  },
 }
 ```
 
