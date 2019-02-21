@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: balldontlie-api
-        image: gcr.io/balldontlie/api:0.9
+        image: gcr.io/balldontlie/api:0.10
         ports:
         - name: http-server
           containerPort: 3000
