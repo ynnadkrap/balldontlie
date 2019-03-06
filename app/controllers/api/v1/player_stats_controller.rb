@@ -18,6 +18,7 @@ class Api::V1::PlayerStatsController < ApplicationController
     @clean_params ||= params.permit(
       :page,
       :per_page,
+      :postseason,
       player_ids: [],
       game_ids: [],
       seasons: [],

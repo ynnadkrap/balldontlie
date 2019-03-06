@@ -17,6 +17,7 @@ class PlayerStatQuery
     scope = game_ids(scope) if !params['game_ids'].empty?
     scope = seasons(scope) if !params['seasons'].empty?
     scope = dates(scope) if !params['dates'].empty?
+    scope = postseason(scope) if !params['postseason'].nil?
 
     scope
   end
@@ -37,5 +38,9 @@ class PlayerStatQuery
 
   def dates(scope)
     scope.joins(:game).where(games: { date: params['dates'] })
+  end
+
+  def postseason(scope)
+    scope.joins(:game).where(games: { postseason: params['postseason'] })
   end
 end

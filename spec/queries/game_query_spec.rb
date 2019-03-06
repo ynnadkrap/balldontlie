@@ -59,6 +59,35 @@ describe GameQuery do
     end
   end
 
+  describe 'postseason' do
+    let!(:game_postseason) { create(:game, postseason: true) }
+    let!(:game_regular) { create(:game, postseason: false) }
+
+    context 'when not specified' do
+      it 'returns both' do
+        res = GameQuery.new.games
+
+        expect(res).to match_array([game_postseason, game_regular])
+      end
+    end
+
+    context 'when postseason' do
+      it 'returns postseason games' do
+        res = GameQuery.new(params: { 'postseason' => true }).games
+
+        expect(res).to match_array([game_postseason])
+      end
+    end
+
+    context 'when not postseason' do
+      it 'returns regular season games' do
+        res = GameQuery.new(params: { 'postseason' => false }).games
+
+        expect(res).to match_array([game_regular])
+      end
+    end
+  end
+
   context 'when season and teams are both specified' do
     let!(:team_1) { create(:team) }
     let!(:team_2) { create(:team) }

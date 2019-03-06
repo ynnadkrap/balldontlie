@@ -101,6 +101,38 @@ describe PlayerStatQuery do
     end
   end
 
+  describe 'postseason' do
+    let!(:game_postseason) { create(:game, postseason: true) }
+    let!(:game_regular) { create(:game, postseason: false) }
+
+    let!(:player_stat_1) { create(:player_stat, game: game_postseason) }
+    let!(:player_stat_2) { create(:player_stat, game: game_regular) }
+
+    context 'when not specified' do
+      it 'returns both' do
+        res = PlayerStatQuery.new.player_stats
+
+        expect(res).to match_array([player_stat_1, player_stat_2])
+      end
+    end
+
+    context 'when postseason' do
+      it 'returns postseason games' do
+        res = PlayerStatQuery.new(params: { 'postseason' => true }).player_stats
+
+        expect(res).to match_array([player_stat_1])
+      end
+    end
+
+    context 'when not postseason' do
+      it 'returns regular season games' do
+        res = PlayerStatQuery.new(params: { 'postseason' => false }).player_stats
+
+        expect(res).to match_array([player_stat_2])
+      end
+    end
+  end
+
   context 'when multiple param types are specified' do
     let!(:player_1) { create(:player) }
     let!(:player_2) { create(:player) }

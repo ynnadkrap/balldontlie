@@ -289,7 +289,7 @@ Seasons are represented by the year they began. For example, 2018 represents sea
 
 ### Query Parameters
 
-You can combine query parameters. For example: `?seasons[]=2018&team_ids[]=1` will returns games for team_id 1 for the 2018-2019 season.
+You can combine query parameters. For example: `?seasons[]=2018&team_ids[]=1` will return games for team_id 1 for the 2018-2019 season.
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -298,6 +298,7 @@ per_page | 25 | The number of results returned per call, used for pagination.
 dates | | An array of dates formatted in 'YYYY-MM-DD'
 seasons | | An array of seasons
 team_ids | | An array of team_ids
+postseason | | Boolean
 
 ## Get a Specific Game
 
@@ -437,7 +438,7 @@ This endpoint retrieves all stats.
 
 ### Query Parameters
 
-You can combine query parameters. For example: `?seasons[]=2018&seasons[]=2015&player_ids[]=1&player_ids[]=2` will returns stats for player_ids 1 and 2 for the 2015-2016 and 2018-2019 season.
+You can combine query parameters. For example: `?seasons[]=2018&seasons[]=2015&player_ids[]=1&player_ids[]=2&postseason=true` will return stats for player_ids 1 and 2 for the 2015-2016 and 2018-2019 postseason.
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -447,6 +448,7 @@ dates | | An array of dates formatted in 'YYYY-MM-DD'
 seasons | | An array of seasons
 player_ids | | An array of player_ids
 game_ids | | An array of game_ids
+postseason | | Boolean
 
 ## Considerations
 
