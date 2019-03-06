@@ -117,7 +117,7 @@ describe PlayerStatQuery do
     end
 
     context 'when postseason' do
-      it 'returns postseason games' do
+      it 'returns stats for postseason games' do
         res = PlayerStatQuery.new(params: { 'postseason' => true }).player_stats
 
         expect(res).to match_array([player_stat_1])
@@ -125,11 +125,59 @@ describe PlayerStatQuery do
     end
 
     context 'when not postseason' do
-      it 'returns regular season games' do
+      it 'returns stats for regular season games' do
         res = PlayerStatQuery.new(params: { 'postseason' => false }).player_stats
 
         expect(res).to match_array([player_stat_2])
       end
+    end
+  end
+
+  context 'when start_date is specified' do
+    let(:game_1) { create(:game, date: Date.new(2019, 1, 1)) }
+    let(:game_2) { create(:game, date: Date.new(2018, 1, 1)) }
+
+    let!(:player_stat_1) { create(:player_stat, game: game_1) }
+    let!(:player_stat_2) { create(:player_stat, game: game_2) }
+
+    it 'returns stats that occur on or after the date' do
+      res = PlayerStatQuery.new(params: { 'start_date' => '2019-01-01' }).player_stats
+
+      expect(res).to match_array([player_stat_1])
+    end
+  end
+
+  context 'when end_date is specified' do
+    let(:game_1) { create(:game, date: Date.new(2019, 1, 1)) }
+    let(:game_2) { create(:game, date: Date.new(2018, 1, 1)) }
+
+    let!(:player_stat_1) { create(:player_stat, game: game_1) }
+    let!(:player_stat_2) { create(:player_stat, game: game_2) }
+
+    it 'returns stats that occur on or before the date' do
+      res = PlayerStatQuery.new(params: { 'end_date' => '2018-01-01' }).player_stats
+
+      expect(res).to match_array([player_stat_2])
+    end
+  end
+
+  context 'when start and end_date are specified' do
+    let(:game_1) { create(:game, date: Date.new(2019, 1, 1)) }
+    let(:game_2) { create(:game, date: Date.new(2018, 1, 1)) }
+    let(:game_3) { create(:game, date: Date.new(2019, 2, 1)) }
+    let(:game_4) { create(:game, date: Date.new(2017, 1, 1)) }
+
+    let!(:player_stat_1) { create(:player_stat, game: game_1) }
+    let!(:player_stat_2) { create(:player_stat, game: game_2) }
+    let!(:player_stat_3) { create(:player_stat, game: game_3) }
+    let!(:player_stat_4) { create(:player_stat, game: game_4) }
+
+    it 'returns stats that occur in the window' do
+      res = PlayerStatQuery.new(
+        params: { 'start_date' => '2018-01-01', 'end_date' => '2019-01-01' }
+      ).player_stats
+
+      expect(res).to match_array([player_stat_1, player_stat_2])
     end
   end
 

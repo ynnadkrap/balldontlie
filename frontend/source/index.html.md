@@ -299,6 +299,8 @@ dates | | An array of dates formatted in 'YYYY-MM-DD'
 seasons | | An array of seasons
 team_ids | | An array of team_ids
 postseason | | Boolean
+start_date | | A single date in 'YYYY-MM-DD' format. This is used to select games that occur on or after this date.
+end_date | | A single date in 'YYYY-MM-DD' format. This is used to select games that occur on or before this date.
 
 ## Get a Specific Game
 
@@ -449,6 +451,8 @@ seasons | | An array of seasons
 player_ids | | An array of player_ids
 game_ids | | An array of game_ids
 postseason | | Boolean
+start_date | | A single date in 'YYYY-MM-DD' format. This is used to select games that occur on or after this date.
+end_date | | A single date in 'YYYY-MM-DD' format. This is used to select games that occur on or before this date.
 
 ## Considerations
 

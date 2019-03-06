@@ -18,6 +18,8 @@ class PlayerStatQuery
     scope = seasons(scope) if !params['seasons'].empty?
     scope = dates(scope) if !params['dates'].empty?
     scope = postseason(scope) if !params['postseason'].nil?
+    scope = start_date(scope) if params['start_date']
+    scope = end_date(scope) if params['end_date']
 
     scope
   end
@@ -42,5 +44,13 @@ class PlayerStatQuery
 
   def postseason(scope)
     scope.joins(:game).where(games: { postseason: params['postseason'] })
+  end
+
+  def start_date(scope)
+    scope.joins(:game).where('games.date >= ?', params['start_date'])
+  end
+
+  def end_date(scope)
+    scope.joins(:game).where('games.date <= ?', params['end_date'])
   end
 end

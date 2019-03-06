@@ -88,6 +88,41 @@ describe GameQuery do
     end
   end
 
+  context 'when start_date is specified' do
+    let(:game_1) { create(:game, date: Date.new(2019, 1, 1)) }
+    let(:game_2) { create(:game, date: Date.new(2018, 1, 1)) }
+
+    it 'returns games that occur on or after the date' do
+      res = GameQuery.new(params: { 'start_date' => '2019-01-01' }).games
+
+      expect(res).to match_array([game_1])
+    end
+  end
+
+  context 'when end_date is specified' do
+    let(:game_1) { create(:game, date: Date.new(2019, 1, 1)) }
+    let(:game_2) { create(:game, date: Date.new(2018, 1, 1)) }
+
+    it 'returns games that occur on or before the date' do
+      res = GameQuery.new(params: { 'end_date' => '2018-01-01' }).games
+
+      expect(res).to match_array([game_2])
+    end
+  end
+
+  context 'when start and end_date are specified' do
+    let(:game_1) { create(:game, date: Date.new(2019, 1, 1)) }
+    let(:game_2) { create(:game, date: Date.new(2018, 1, 1)) }
+    let(:game_3) { create(:game, date: Date.new(2019, 2, 1)) }
+    let(:game_4) { create(:game, date: Date.new(2017, 1, 1)) }
+
+    it 'returns games that occur in the window' do
+      res = GameQuery.new(params: { 'start_date' => '2018-01-01', 'end_date' => '2019-01-01' }).games
+
+      expect(res).to match_array([game_1, game_2])
+    end
+  end
+
   context 'when season and teams are both specified' do
     let!(:team_1) { create(:team) }
     let!(:team_2) { create(:team) }

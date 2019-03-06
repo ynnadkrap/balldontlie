@@ -25,6 +25,8 @@ class Api::V1::GamesController < ApplicationController
       :page,
       :per_page,
       :postseason,
+      :start_date,
+      :end_date,
       dates: [],
       seasons: [],
       team_ids: []

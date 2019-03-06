@@ -16,6 +16,8 @@ class GameQuery
     scope = seasons(scope) if params['seasons'].any?
     scope = team_ids(scope) if params['team_ids'].any?
     scope = postseason(scope) if !params['postseason'].nil?
+    scope = start_date(scope) if params['start_date']
+    scope = end_date(scope) if params['end_date']
 
     scope
   end
@@ -40,5 +42,13 @@ class GameQuery
 
   def postseason(scope)
     scope.where(postseason: params['postseason'])
+  end
+
+  def start_date(scope)
+    scope.where('date >= ?', params['start_date'])
+  end
+
+  def end_date(scope)
+    scope.where('date <= ?', params['end_date'])
   end
 end

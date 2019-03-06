@@ -19,6 +19,8 @@ class Api::V1::PlayerStatsController < ApplicationController
       :page,
       :per_page,
       :postseason,
+      :start_date,
+      :end_date,
       player_ids: [],
       game_ids: [],
       seasons: [],
