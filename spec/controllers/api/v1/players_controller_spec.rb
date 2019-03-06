@@ -2,7 +2,7 @@ describe Api::V1::PlayersController, type: :controller do
   describe '#index' do
     let!(:players) { create_list(:player, 11) }
 
-    before { get :index, params: { per_page: 10  } }
+    before { get :index, params: { per_page: 10 } }
 
     it 'succeeds' do
       expect(response.status).to eq 200

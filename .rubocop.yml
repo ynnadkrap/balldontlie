@@ -1,5 +1,11 @@
-Exclude:
-  - 'db/**/*'
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'config/**/*'
+    - 'frontend/**/*'
+    - 'Gemfile'
 
 Style/Documentation:
   Enabled: false
@@ -13,5 +19,23 @@ Layout/SpaceAroundOperators:
 Metrics/MethodLength:
   Enabled: false
 
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Enabled: false
+
 Metrics/AbcSize:
+  Enabled: false
+
+Style/SymbolProc:
+  Enabled: false
+
+Layout/IndentArray:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
   Enabled: false

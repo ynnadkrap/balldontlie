@@ -4,24 +4,24 @@ class PlayerStatSerializer < Blueprinter::Base
   end
 
   fields :min,
-    :fgm,
-    :fga,
-    :fg_pct,
-    :fg3m,
-    :fg3a,
-    :fg3_pct,
-    :ftm,
-    :fta,
-    :ft_pct,
-    :oreb,
-    :dreb,
-    :reb,
-    :ast,
-    :stl,
-    :blk,
-    :turnover,
-    :pf,
-    :pts
+         :fgm,
+         :fga,
+         :fg_pct,
+         :fg3m,
+         :fg3a,
+         :fg3_pct,
+         :ftm,
+         :fta,
+         :ft_pct,
+         :oreb,
+         :dreb,
+         :reb,
+         :ast,
+         :stl,
+         :blk,
+         :turnover,
+         :pf,
+         :pts
 
   view :expanded do
     association :player, blueprint: PlayerSerializer, view: :slim

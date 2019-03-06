@@ -13,11 +13,11 @@ class PlayerStatQuery
   def player_stats
     scope = PlayerStat.all
 
-    scope = player_ids(scope) if !params['player_ids'].empty?
-    scope = game_ids(scope) if !params['game_ids'].empty?
-    scope = seasons(scope) if !params['seasons'].empty?
-    scope = dates(scope) if !params['dates'].empty?
-    scope = postseason(scope) if !params['postseason'].nil?
+    scope = player_ids(scope) unless params['player_ids'].empty?
+    scope = game_ids(scope) unless params['game_ids'].empty?
+    scope = seasons(scope) unless params['seasons'].empty?
+    scope = dates(scope) unless params['dates'].empty?
+    scope = postseason(scope) unless params['postseason'].nil?
     scope = start_date(scope) if params['start_date']
     scope = end_date(scope) if params['end_date']
 

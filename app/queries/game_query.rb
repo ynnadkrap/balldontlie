@@ -15,7 +15,7 @@ class GameQuery
     scope = dates(scope) if params['dates'].any?
     scope = seasons(scope) if params['seasons'].any?
     scope = team_ids(scope) if params['team_ids'].any?
-    scope = postseason(scope) if !params['postseason'].nil?
+    scope = postseason(scope) unless params['postseason'].nil?
     scope = start_date(scope) if params['start_date']
     scope = end_date(scope) if params['end_date']
 

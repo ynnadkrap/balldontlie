@@ -4,9 +4,9 @@ class TeamSerializer < Blueprinter::Base
   end
 
   fields :conference,
-    :division,
-    :city,
-    :abbreviation,
-    :name,
-    :full_name
+         :division,
+         :city,
+         :abbreviation,
+         :name,
+         :full_name
 end

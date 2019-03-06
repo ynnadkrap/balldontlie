@@ -3,9 +3,9 @@ FactoryBot.define do
     id
     public_id { generate(:id) }
     date { Date.new(2019, 1, 1) }
-    status { "Final" }
+    status { 'Final' }
     period { 4 }
-    time { " " }
+    time { ' ' }
     association :home_team, factory: :team_east
     association :visitor_team, factory: :team_west
     season { 2018 }

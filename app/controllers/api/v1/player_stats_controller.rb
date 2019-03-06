@@ -3,9 +3,9 @@ class Api::V1::PlayerStatsController < ApplicationController
 
   def index
     player_stats = PlayerStatQuery.new(params: clean_params).player_stats
-                     .page(clean_params[:page] || 0)
-                     .per(clean_params[:per_page] || DEFAULT_PAGE_SIZE)
-                     .includes({ player: :team }, { game: [:player_stats, :home_team, :visitor_team] }, :team)
+                                  .page(clean_params[:page] || 0)
+                                  .per(clean_params[:per_page] || DEFAULT_PAGE_SIZE)
+                                  .includes({ player: :team }, { game: %i[player_stats home_team visitor_team] }, :team)
 
     render json: {
       data: PlayerStatSerializer.render_as_hash(player_stats, view: :expanded)
