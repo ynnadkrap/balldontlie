@@ -51,6 +51,9 @@ curl "https://www.balldontlie.io/api/v1/players"
       "first_name":"LeBron",
       "last_name":"James",
       "position":"F",
+      "height_feet": 6,
+      "height_inches": 8,
+      "weight_pounds": 250,
       "team":{
         "id":14,
         "abbreviation":"LAL",
@@ -101,6 +104,9 @@ curl "https://www.balldontlie.io/api/v1/players/237"
   "first_name":"LeBron",
   "last_name":"James",
   "position":"F",
+  "height_feet": 6,
+  "height_inches": 8,
+  "weight_pounds": 250,
   "team":{
     "id":14,
     "abbreviation":"LAL",
@@ -124,6 +130,10 @@ This endpoint retrieves a specific player.
 Parameter | Description
 --------- | -----------
 ID | The ID of the player to retrieve
+
+## Considerations
+
+<aside class="warning">Not all players will have height_feet, height_inches, or weight_pounds.</aside>
 
 # Teams
 

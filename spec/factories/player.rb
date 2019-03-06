@@ -5,6 +5,9 @@ FactoryBot.define do
     first_name { 'Derrick' }
     last_name { 'Rose' }
     position { 'PG' }
+    height_feet { 6 }
+    height_inches { 3 }
+    weight_pounds { 200 }
     team
   end
 end

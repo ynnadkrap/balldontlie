@@ -5,7 +5,10 @@ class PlayerSerializer < Blueprinter::Base
 
   fields :first_name,
     :last_name,
-    :position
+    :position,
+    :height_feet,
+    :height_inches,
+    :weight_pounds
 
   view :expanded do
     association :team, blueprint: TeamSerializer
