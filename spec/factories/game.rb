@@ -9,5 +9,6 @@ FactoryBot.define do
     association :home_team, factory: :team_east
     association :visitor_team, factory: :team_west
     season { 2018 }
+    postseason { false }
   end
 end

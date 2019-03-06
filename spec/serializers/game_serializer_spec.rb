@@ -22,7 +22,9 @@ describe GameSerializer do
                       home_player_stat_2,
                       home_player_stat_3,
                       away_player_stat,
-                    ])
+                    ],
+                    postseason: false
+                   )
   end
 
   context 'when expanded' do
@@ -41,6 +43,7 @@ describe GameSerializer do
       expect(res[:status]).to eq "Final"
       expect(res[:period]).to eq 4
       expect(res[:time]).to eq " "
+      expect(res[:postseason]).to eq false
     end
   end
 
@@ -60,6 +63,7 @@ describe GameSerializer do
       expect(res[:status]).to eq "Final"
       expect(res[:period]).to eq 4
       expect(res[:time]).to eq " "
+      expect(res[:postseason]).to eq false
     end
   end
 

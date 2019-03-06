@@ -3,7 +3,7 @@ class GameSerializer < Blueprinter::Base
     object.public_id
   end
 
-  fields :date, :season, :status, :period, :time
+  fields :date, :season, :status, :period, :time, :postseason
 
   field :home_team_score do |game|
     game.player_stats.reduce(0) do |acc, stat|

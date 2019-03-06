@@ -247,6 +247,7 @@ curl "https://www.balldontlie.io/api/v1/games"
       "period": 4,
       "status": "Final",
       "time": " ",
+      "postseason": false,
       "home_team":{
         "id":2,
         "abbreviation":"BOS",
@@ -316,6 +317,7 @@ curl "https://www.balldontlie.io/api/v1/games/1"
   "period": 4,
   "status": "Final",
   "time": " ",
+  "postseason": false,
   "home_team":{
     "id":2,
     "abbreviation":"BOS",
@@ -351,7 +353,7 @@ ID | The ID of the game to retrieve
 
 ## Considerations
 
-<aside class="warning">Playoff games are included in the data set. There is currently no attribute that indicates whether a game is for regular or post season. Pre-season games are not included.</aside>
+<aside class="warning">Pre-season games are not included.</aside>
 
 <aside class="warning">Games will be updated every ~10 minutes</aside>
 

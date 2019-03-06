@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190208144645) do
+ActiveRecord::Schema.define(version: 20190306154702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20190208144645) do
     t.string "status"
     t.integer "period"
     t.string "time"
+    t.boolean "postseason", default: false, null: false
     t.index ["date", "home_team_id", "visitor_team_id"], name: "games_unique_constraint", unique: true
     t.index ["public_id"], name: "idx_games_public_id"
   end
