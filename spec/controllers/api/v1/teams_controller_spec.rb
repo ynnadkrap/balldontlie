@@ -21,7 +21,7 @@ describe Api::V1::TeamsController, type: :controller do
       expect(response.status).to eq 200
 
       res = JSON.parse(response.body).with_indifferent_access
-      expect(res[:public_id]).to eq team.public_id
+      expect(res[:id]).to eq team.public_id
     end
   end
 end

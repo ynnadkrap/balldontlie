@@ -14,6 +14,6 @@ class Api::V1::TeamsController < ApplicationController
   def show
     team = Team.find_by!(public_id: params[:id])
 
-    render json: team
+    render json: TeamSerializer.render(team)
   end
 end
