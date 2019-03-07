@@ -1,24 +1,21 @@
-# README
+# balldontlie
+This repository hosts the code to run www.balldontlie.io and its API.
+The script to retrieve data is stored in a private repository elsewhere.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development
+**API**   
+We're using rails to run the server:   
+`bundle install`  
+`rails s`
 
-Things you may want to cover:
+**Docs**  
+We're using [slate](https://github.com/lord/slate) to generate the docs page.  
+`cd frontend`  
+`bundle install`  
+`bundle exec middleman server`  
 
-* Ruby version
+## Data   
+If you want a copy of the production data, email me at hello@balldontlie.io and I'll give you a dump. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Contributing    
+Feel free to open any pull requests or issues.
