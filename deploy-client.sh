@@ -11,4 +11,4 @@ docker push gcr.io/balldontlie/client:$1
 sed -i '' -E "s/version:.*$/version: $1/g" deploy/client/Chart.yaml
 sed -i '' -E "s/gcr.io\/balldontlie\/client:.*$/gcr.io\/balldontlie\/client:$1/g" deploy/client/templates/deployment.yaml
 helm upgrade geared-jellyfish deploy/client
-commit -am "Release client $1"
+git commit -am "Release client $1"
