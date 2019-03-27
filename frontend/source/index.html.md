@@ -16,6 +16,8 @@ Welcome to the balldontlie API!
 
 You can use our free API to access NBA related data. No email required. No API key required.
 
+This is an [open source project](https://github.com/ynnadkrap/balldontlie). Feel free to open issues and pull requests.
+
 Here's an example of something you can build with this API: [example](https://viz.balldontlie.io)
 
 If your sole purpose is to scrape all the data, please reach out to instead of bombarding our servers. We'll give you the data.
