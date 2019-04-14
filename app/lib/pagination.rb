@@ -1,5 +1,6 @@
 module Pagination
   DEFAULT_PAGE_SIZE = 25
+  MAX_PAGE_SIZE = 100
 
   def pagination_data(relation)
     {
@@ -11,5 +12,9 @@ module Pagination
         total_count: relation.total_count
       }
     }
+  end
+
+  def per_page(params_per_page)
+    [(params_per_page || DEFAULT_PAGE_SIZE).to_i, MAX_PAGE_SIZE].min
   end
 end

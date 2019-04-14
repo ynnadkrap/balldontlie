@@ -18,7 +18,7 @@ You can use our free API to access NBA related data. No email required. No API k
 
 This is an [open source project](https://github.com/ynnadkrap/balldontlie). Feel free to open issues and pull requests.
 
-Here's an example of something you can build with this API: [example](https://viz.balldontlie.io)
+Here's an example of something you can build with this API: [example](https://ball-dont-lie.herokuapp.com/)
 
 If your sole purpose is to scrape all the data, please reach out to instead of bombarding our servers. We'll give you the data.
 
@@ -33,6 +33,7 @@ You need a computer with internet connection.
 * No API key required
 * Contains data from seasons 1979-current
 * Live(ish) game stats are available (updated every ~10 minutes)
+* Rate limit of 60 requests per minute
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c51c3810db2ab3ca4ab4)
 
@@ -89,7 +90,7 @@ This endpoint retrieves all players from all seasons.
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | The page number, used for pagination.
-per_page | 25 | The number of results returned per call, used for pagination.
+per_page | 25 | The number of results returned per call, used for pagination. Max 100.
 search | | Used to filter players based on their name. For example, `?search=davis` will return players that have 'davis' in their first or last name.
 
 ## Get a Specific Player
@@ -296,7 +297,7 @@ You can combine query parameters. For example: `?seasons[]=2018&team_ids[]=1` wi
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | The page number, used for pagination.
-per_page | 25 | The number of results returned per call, used for pagination.
+per_page | 25 | The number of results returned per call, used for pagination. Max 100.
 dates | | An array of dates formatted in 'YYYY-MM-DD'
 seasons | | An array of seasons
 team_ids | | An array of team_ids
@@ -447,7 +448,7 @@ You can combine query parameters. For example: `?seasons[]=2018&seasons[]=2015&p
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | The page number, used for pagination.
-per_page | 25 | The number of results returned per call, used for pagination.
+per_page | 25 | The number of results returned per call, used for pagination. Max 100.
 dates | | An array of dates formatted in 'YYYY-MM-DD'
 seasons | | An array of seasons
 player_ids | | An array of player_ids

@@ -24,9 +24,6 @@ module Balldontlie
         resource '*', headers: :any, methods: [:get, :post, :options]
       end
     end
-    Raven.configure do |config|
-      config.dsn = 'https://c4a75f7c84b7426098004aab78e7dbc1:9f66fccf55e442a48e70d19ed20f4ef2@sentry.io/1382653'
-    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 

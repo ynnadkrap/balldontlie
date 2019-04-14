@@ -170,10 +170,6 @@ GEM
     ruby_dep (1.5.0)
     sentry-raven (2.9.0)
       faraday (>= 0.7.6, < 1.0)
-    skylight (3.1.4)
-      skylight-core (= 3.1.4)
-    skylight-core (3.1.4)
-      activesupport (>= 4.2.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -215,7 +211,6 @@ DEPENDENCIES
   rspec_junit_formatter
   rubocop
   sentry-raven
-  skylight
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data

@@ -5,7 +5,7 @@ class Api::V1::PlayersController < ApplicationController
     players = PlayerQuery.new(params: params).players
                          .includes(:team)
                          .page(params[:page] || 0)
-                         .per(params[:per_page] || DEFAULT_PAGE_SIZE)
+                         .per(per_page(params[:per_page]))
 
     render json: {
       data: PlayerSerializer.render_as_hash(players, view: :expanded)
