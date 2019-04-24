@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe PlayerQuery do
   context 'when no params specified' do
     let!(:player_1) { create(:player) }

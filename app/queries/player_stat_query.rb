@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PlayerStatQuery
   attr_reader :params
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe SeasonAverageQuery do
   subject { SeasonAverageQuery.new(params: params).averages }
 

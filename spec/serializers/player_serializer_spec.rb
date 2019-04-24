@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe PlayerSerializer do
   context 'when expanded' do
     let!(:team) { Team.new }

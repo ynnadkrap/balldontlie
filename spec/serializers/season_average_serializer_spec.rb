@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe SeasonAverageSerializer do
   let!(:data) do
     [

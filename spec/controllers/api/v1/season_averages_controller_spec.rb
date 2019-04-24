@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Api::V1::SeasonAveragesController, type: :controller do
   describe '#index' do
     let!(:game) { create(:game, season: 2018) }

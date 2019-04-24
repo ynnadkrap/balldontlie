@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Api::V1::PlayerStatsController, type: :controller do
   let!(:player_1) { create(:player) }
   let!(:player_2) { create(:player) }

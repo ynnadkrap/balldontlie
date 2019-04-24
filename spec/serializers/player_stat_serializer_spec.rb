@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe PlayerStatSerializer do
   let!(:game) { build(:game) }
   let!(:player) { build(:player) }

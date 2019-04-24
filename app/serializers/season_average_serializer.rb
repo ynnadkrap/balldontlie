@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SeasonAverageSerializer
   attr_reader :data
 
@@ -26,8 +28,8 @@ class SeasonAverageSerializer
 
   def min(stats)
     min = stats['min']
-    min.sub!('{', '')
-    min.sub!('}', '')
+    min = min.sub('{', '')
+    min = min.sub('}', '')
     min_arr = min.split(',')
 
     sec = min_arr.reduce(0) do |sum, time|

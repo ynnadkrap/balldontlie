@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pagination
   DEFAULT_PAGE_SIZE = 25
   MAX_PAGE_SIZE = 100
