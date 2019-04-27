@@ -3,7 +3,7 @@ jobs:
   build:
     parallelism: 1
     docker:
-      - image: circleci/ruby:2.4.2-jessie-node
+      - image: circleci/ruby:2.6.2
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
