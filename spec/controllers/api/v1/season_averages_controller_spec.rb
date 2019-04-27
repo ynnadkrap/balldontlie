@@ -12,6 +12,7 @@ describe Api::V1::SeasonAveragesController, type: :controller do
 
     it 'returns 200' do
       expect(response.status).to eq 200
+      expect(JSON.parse(response.body).dig('data').size).to eq 1
     end
   end
 end
