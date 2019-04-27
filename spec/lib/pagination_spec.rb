@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Pagination' do
   let!(:klass) { Class.new { include Pagination }.new }
 

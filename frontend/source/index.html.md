@@ -18,7 +18,7 @@ You can use our free API to access NBA related data. No email required. No API k
 
 This is an [open source project](https://github.com/ynnadkrap/balldontlie). Feel free to open issues and pull requests.
 
-Here's an example of something you can build with this API: [example](https://ball-dont-lie.herokuapp.com/)
+Here's an example of something you can build with this API: [example](https://balldontlie-example.herokuapp.com/)
 
 If your sole purpose is to scrape all the data, please reach out to instead of bombarding our servers. We'll give you the data.
 
@@ -462,3 +462,60 @@ end_date | | A single date in 'YYYY-MM-DD' format. This is used to select games 
 <aside class="warning">Some records may come back with <code>min: '0'</code> despite not being true.</aside>
 
 <aside class="warning">Stats will be updated every ~10 minutes</aside>
+
+# Season Averages
+
+## Get Averages
+```shell
+curl "https://www.balldontlie.io/api/v1/season_averages?player_ids[]=237"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "games_played":37,
+      "player_id":237,
+      "season":2018,
+      "min":"34:46",
+      "fgm":9.92,
+      "fga":19.22,
+      "fg3m":2.05,
+      "fg3a":5.73,
+      "ftm":5.08,
+      "fta":7.54,
+      "oreb":0.95,
+      "dreb":7.59,
+      "reb":8.54,
+      "ast":7.38,
+      "stl":1.32,
+      "blk":0.65,
+      "turnover":3.49,
+      "pf":1.59,
+      "pts":26.97,
+      "fg_pct":0.516,
+      "fg3_pct":0.358,
+      "ft_pct":0.674
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`GET https://www.balldontlie.io/api/v1/season_averages`
+
+### Query Parameters
+
+`api/v1/season_averages?season=2018&player_ids[]=1&player_ids[]=2` will return regular season averages for player_ids 1 and 2.
+
+Parameter | Default | Description
+--------- | ------- | -----------
+season | current season | A single season
+player_ids | | An array of player_ids
+
+## Considerations
+
+<aside class="warning">Only regular season averages are available.</aside>
+

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GameSerializer < Blueprinter::Base
   identifier :id do |object|
     object.public_id

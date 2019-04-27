@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe GameQuery do
   context 'when no params are specified' do
     let!(:game_1) { create(:game) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe GameSerializer do
   let!(:home_player_stat_1) { instance_double(PlayerStat, pts: 10, team_id: 1) }
   let!(:home_player_stat_2) { instance_double(PlayerStat, pts: 20, team_id: 1) }

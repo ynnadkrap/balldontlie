@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe TeamSerializer do
   let!(:team) { build(:team, public_id: 1) }
 

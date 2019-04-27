@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe PlayerStatQuery do
   context 'when no params are specified' do
     let!(:player_stats) { create_list(:player_stat, 5) }

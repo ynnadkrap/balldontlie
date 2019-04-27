@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Api::V1::TeamsController, type: :controller do
   describe '#index' do
     let!(:teams) { create_list(:team, 10) }
