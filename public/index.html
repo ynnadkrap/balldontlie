@@ -1,0 +1,932 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>balldontlie API</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/cryingjordan.jpeg" class="logo" alt="Cryingjordan" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getting-started" class="toc-h2 toc-link">Getting Started</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#players" class="toc-h1 toc-link">Players</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-players" class="toc-h2 toc-link">Get All Players</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-player" class="toc-h2 toc-link">Get a Specific Player</a>
+                  </li>
+                  <li>
+                    <a href="#considerations" class="toc-h2 toc-link">Considerations</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#teams" class="toc-h1 toc-link">Teams</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-teams" class="toc-h2 toc-link">Get All Teams</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-team" class="toc-h2 toc-link">Get a Specific Team</a>
+                  </li>
+                  <li>
+                    <a href="#considerations-2" class="toc-h2 toc-link">Considerations</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#games" class="toc-h1 toc-link">Games</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#attributes" class="toc-h2 toc-link">Attributes</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-games" class="toc-h2 toc-link">Get All Games</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-game" class="toc-h2 toc-link">Get a Specific Game</a>
+                  </li>
+                  <li>
+                    <a href="#considerations-3" class="toc-h2 toc-link">Considerations</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#stats" class="toc-h1 toc-link">Stats</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-stats" class="toc-h2 toc-link">Get All Stats</a>
+                  </li>
+                  <li>
+                    <a href="#considerations-4" class="toc-h2 toc-link">Considerations</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#season-averages" class="toc-h1 toc-link">Season Averages</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-averages" class="toc-h2 toc-link">Get Averages</a>
+                  </li>
+                  <li>
+                    <a href="#considerations-5" class="toc-h2 toc-link">Considerations</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link">Errors</a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the balldontlie API!</p>
+
+<p>You can use our free API to access NBA related data. No email required. No API key required.</p>
+
+<p>This is an <a href="https://github.com/ynnadkrap/balldontlie">open source project</a>. Feel free to open issues and pull requests.</p>
+
+<p>Here&#39;s an example of something you can build with this API: <a href="https://balldontlie-example.herokuapp.com/">example</a></p>
+
+<p>If your sole purpose is to scrape all the data, please reach out to instead of bombarding our servers. We&#39;ll give you the data.</p>
+
+<p>Email us at hello@balldontlie.io with any comments or questions. We hope to build on top of this first iteration with community input. Please reach out if you want to help.</p>
+
+<p>Also, please feel free to <a href="https://www.patreon.com/balldontlie">donate</a> to help keep the lights on.</p>
+<h2 id='getting-started'>Getting Started</h2>
+<p>You need a computer with internet connection.</p>
+
+<ul>
+<li>No email required</li>
+<li>No API key required</li>
+<li>Contains data from seasons 1979-current</li>
+<li>Live(ish) game stats are available (updated every ~10 minutes)</li>
+<li>Rate limit of 60 requests per minute</li>
+</ul>
+
+<p><a href="https://app.getpostman.com/run-collection/c51c3810db2ab3ca4ab4"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
+<h1 id='players'>Players</h1><h2 id='get-all-players'>Get All Players</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.balldontlie.io/api/v1/players"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">237</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"LeBron"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height_feet"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height_inches"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weight_pounds"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"team"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"abbreviation"</span><span class="p">:</span><span class="s2">"LAL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"conference"</span><span class="p">:</span><span class="s2">"West"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"division"</span><span class="p">:</span><span class="s2">"Pacific"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="s2">"Los Angeles Lakers"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Lakers"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+ </span><span class="p">],</span><span class="w">
+ </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">9999</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all players from all seasons.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://www.balldontlie.io/api/v1/players</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>The page number, used for pagination.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>25</td>
+<td>The number of results returned per call, used for pagination. Max 100.</td>
+</tr>
+<tr>
+<td>search</td>
+<td></td>
+<td>Used to filter players based on their name. For example, <code>?search=davis</code> will return players that have &#39;davis&#39; in their first or last name.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-player'>Get a Specific Player</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.balldontlie.io/api/v1/players/237"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">237</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"LeBron"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"height_feet"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"height_inches"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight_pounds"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"team"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"abbreviation"</span><span class="p">:</span><span class="s2">"LAL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"conference"</span><span class="p">:</span><span class="s2">"West"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"division"</span><span class="p">:</span><span class="s2">"Pacific"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"full_name"</span><span class="p">:</span><span class="s2">"Los Angeles Lakers"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Lakers"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific player.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://www.balldontlie.io/api/v1/players/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the player to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='considerations'>Considerations</h2>
+<aside class="warning">Not all players will have height_feet, height_inches, or weight_pounds.</aside>
+<h1 id='teams'>Teams</h1><h2 id='get-all-teams'>Get All Teams</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.balldontlie.io/api/v1/teams"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"abbreviation"</span><span class="p">:</span><span class="s2">"LAL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"conference"</span><span class="p">:</span><span class="s2">"West"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"division"</span><span class="p">:</span><span class="s2">"Pacific"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"full_name"</span><span class="p">:</span><span class="s2">"Los Angeles Lakers"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Lakers"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all teams for the current season.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://www.balldontlie.io/api/v1/teams</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>The page number, used for pagination.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>30</td>
+<td>The number of results returned per call, used for pagination.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-team'>Get a Specific Team</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.balldontlie.io/api/v1/teams/14"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"abbreviation"</span><span class="p">:</span><span class="s2">"LAL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"conference"</span><span class="p">:</span><span class="s2">"West"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"division"</span><span class="p">:</span><span class="s2">"Pacific"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"full_name"</span><span class="p">:</span><span class="s2">"Los Angeles Lakers"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Lakers"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific team.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://www.balldontlie.io/api/v1/teams/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the team to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='considerations-2'>Considerations</h2>
+<aside class="warning">We only contain information on current NBA teams.</aside>
+<h1 id='games'>Games</h1><h2 id='attributes'>Attributes</h2>
+<p>These attributes are worth noting:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Values</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>period</td>
+<td>integer</td>
+<td>0, 1, 2, 3, 4</td>
+<td>0 will be returned for games that have not started. 4 will be returned when a game is either complete or in the 4th quarter.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td><code>{start_time}</code>, 1st Qtr, 2nd Qtr, Halftime, 3rd Qtr, 4th Qtr, Final</td>
+<td><code>{start_time}</code> looks something like &quot;7:00 pm ET&quot;, which indicates that the game has not started yet.</td>
+</tr>
+<tr>
+<td>time</td>
+<td>string</td>
+<td><code>{time_in_period}</code>, &quot; &quot;</td>
+<td><code>${time_in_period}</code> looks something like &quot;3:44&quot;. &quot; &quot; is an empty string that is returned when game has not started or is complete.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-games'>Get All Games</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.balldontlie.io/api/v1/games"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="s2">"2018-10-16T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"home_team_score"</span><span class="p">:</span><span class="mi">105</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"visitor_team_score"</span><span class="p">:</span><span class="mi">87</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"season"</span><span class="p">:</span><span class="mi">2018</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Final"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">" "</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postseason"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"home_team"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"abbreviation"</span><span class="p">:</span><span class="s2">"BOS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Boston"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"conference"</span><span class="p">:</span><span class="s2">"East"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"division"</span><span class="p">:</span><span class="s2">"Atlantic"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="s2">"Boston Celtics"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Celtics"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"visitor_team"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"abbreviation"</span><span class="p">:</span><span class="s2">"PHI"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Philadelphia"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"conference"</span><span class="p">:</span><span class="s2">"East"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"division"</span><span class="p">:</span><span class="s2">"Atlantic"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="s2">"Philadelphia 76ers"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"76ers"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1877</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">46911</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all games.</p>
+
+<p>Seasons are represented by the year they began. For example, 2018 represents season 2018-2019.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://www.balldontlie.io/api/v1/games</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<p>You can combine query parameters. For example: <code>?seasons[]=2018&amp;team_ids[]=1</code> will return games for team_id 1 for the 2018-2019 season.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>The page number, used for pagination.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>25</td>
+<td>The number of results returned per call, used for pagination. Max 100.</td>
+</tr>
+<tr>
+<td>dates</td>
+<td></td>
+<td>An array of dates formatted in &#39;YYYY-MM-DD&#39;</td>
+</tr>
+<tr>
+<td>seasons</td>
+<td></td>
+<td>An array of seasons</td>
+</tr>
+<tr>
+<td>team_ids</td>
+<td></td>
+<td>An array of team_ids</td>
+</tr>
+<tr>
+<td>postseason</td>
+<td></td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td></td>
+<td>A single date in &#39;YYYY-MM-DD&#39; format. This is used to select games that occur on or after this date.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td></td>
+<td>A single date in &#39;YYYY-MM-DD&#39; format. This is used to select games that occur on or before this date.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-game'>Get a Specific Game</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.balldontlie.io/api/v1/games/1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date"</span><span class="p">:</span><span class="s2">"2018-10-16T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"home_team_score"</span><span class="p">:</span><span class="mi">105</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"visitor_team_score"</span><span class="p">:</span><span class="mi">87</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"season"</span><span class="p">:</span><span class="mi">2018</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Final"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">" "</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postseason"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"home_team"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"abbreviation"</span><span class="p">:</span><span class="s2">"BOS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Boston"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"conference"</span><span class="p">:</span><span class="s2">"East"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"division"</span><span class="p">:</span><span class="s2">"Atlantic"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"full_name"</span><span class="p">:</span><span class="s2">"Boston Celtics"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Celtics"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"visitor_team"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"abbreviation"</span><span class="p">:</span><span class="s2">"PHI"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Philadelphia"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"conference"</span><span class="p">:</span><span class="s2">"East"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"division"</span><span class="p">:</span><span class="s2">"Atlantic"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"full_name"</span><span class="p">:</span><span class="s2">"Philadelphia 76ers"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"76ers"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific game.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://www.balldontlie.io/api/v1/games/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the game to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='considerations-3'>Considerations</h2>
+<aside class="warning">Pre-season games are not included.</aside>
+
+<aside class="warning">Games will be updated every ~10 minutes</aside>
+<h1 id='stats'>Stats</h1><h2 id='get-all-stats'>Get All Stats</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.balldontlie.io/api/v1/stats"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ast"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blk"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dreb"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fg3_pct"</span><span class="p">:</span><span class="mf">0.25</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fg3a"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fg3m"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fg_pct"</span><span class="p">:</span><span class="mf">0.429</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fga"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fgm"</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ft_pct"</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fta"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ftm"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"game"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="s2">"2018-10-16T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"home_team_id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"home_team_score"</span><span class="p">:</span><span class="mi">105</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"season"</span><span class="p">:</span><span class="mi">2018</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visitor_team_id"</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visitor_team_score"</span><span class="p">:</span><span class="mi">87</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"min"</span><span class="p">:</span><span class="s2">"36:49"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"oreb"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pf"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"player"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">145</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Joel"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Embiid"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"F-C"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"team_id"</span><span class="p">:</span><span class="mi">23</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"pts"</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reb"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stl"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"team"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"abbreviation"</span><span class="p">:</span><span class="s2">"PHI"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Philadelphia"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"conference"</span><span class="p">:</span><span class="s2">"East"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"division"</span><span class="p">:</span><span class="s2">"Atlantic"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="s2">"Philadelphia 76ers"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"76ers"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"turnover"</span><span class="p">:</span><span class="mi">5</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">2042</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">51045</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all stats.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://www.balldontlie.io/api/v1/stats</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<p>You can combine query parameters. For example: <code>?seasons[]=2018&amp;seasons[]=2015&amp;player_ids[]=1&amp;player_ids[]=2&amp;postseason=true</code> will return stats for player_ids 1 and 2 for the 2015-2016 and 2018-2019 postseason.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>The page number, used for pagination.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>25</td>
+<td>The number of results returned per call, used for pagination. Max 100.</td>
+</tr>
+<tr>
+<td>dates</td>
+<td></td>
+<td>An array of dates formatted in &#39;YYYY-MM-DD&#39;</td>
+</tr>
+<tr>
+<td>seasons</td>
+<td></td>
+<td>An array of seasons</td>
+</tr>
+<tr>
+<td>player_ids</td>
+<td></td>
+<td>An array of player_ids</td>
+</tr>
+<tr>
+<td>game_ids</td>
+<td></td>
+<td>An array of game_ids</td>
+</tr>
+<tr>
+<td>postseason</td>
+<td></td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td></td>
+<td>A single date in &#39;YYYY-MM-DD&#39; format. This is used to select games that occur on or after this date.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td></td>
+<td>A single date in &#39;YYYY-MM-DD&#39; format. This is used to select games that occur on or before this date.</td>
+</tr>
+</tbody></table>
+<h2 id='considerations-4'>Considerations</h2>
+<aside class="warning">Some records may come back with <code>min: '0'</code> despite not being true.</aside>
+
+<aside class="warning">Stats will be updated every ~10 minutes</aside>
+<h1 id='season-averages'>Season Averages</h1><h2 id='get-averages'>Get Averages</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.balldontlie.io/api/v1/season_averages?player_ids[]=237"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"games_played"</span><span class="p">:</span><span class="mi">37</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"player_id"</span><span class="p">:</span><span class="mi">237</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"season"</span><span class="p">:</span><span class="mi">2018</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"min"</span><span class="p">:</span><span class="s2">"34:46"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fgm"</span><span class="p">:</span><span class="mf">9.92</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fga"</span><span class="p">:</span><span class="mf">19.22</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fg3m"</span><span class="p">:</span><span class="mf">2.05</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fg3a"</span><span class="p">:</span><span class="mf">5.73</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ftm"</span><span class="p">:</span><span class="mf">5.08</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fta"</span><span class="p">:</span><span class="mf">7.54</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"oreb"</span><span class="p">:</span><span class="mf">0.95</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dreb"</span><span class="p">:</span><span class="mf">7.59</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reb"</span><span class="p">:</span><span class="mf">8.54</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ast"</span><span class="p">:</span><span class="mf">7.38</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stl"</span><span class="p">:</span><span class="mf">1.32</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blk"</span><span class="p">:</span><span class="mf">0.65</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"turnover"</span><span class="p">:</span><span class="mf">3.49</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pf"</span><span class="p">:</span><span class="mf">1.59</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pts"</span><span class="p">:</span><span class="mf">26.97</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fg_pct"</span><span class="p">:</span><span class="mf">0.516</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fg3_pct"</span><span class="p">:</span><span class="mf">0.358</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ft_pct"</span><span class="p">:</span><span class="mf">0.674</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://www.balldontlie.io/api/v1/season_averages</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<p><code>api/v1/season_averages?season=2018&amp;player_ids[]=1&amp;player_ids[]=2</code> will return regular season averages for player_ids 1 and 2.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>season</td>
+<td>current season</td>
+<td>A single season</td>
+</tr>
+<tr>
+<td>player_ids</td>
+<td></td>
+<td>An array of player_ids</td>
+</tr>
+</tbody></table>
+<h2 id='considerations-5'>Considerations</h2>
+<aside class="warning">Only regular season averages are available.</aside>
+<h1 id='errors'>Errors</h1>
+<p>The balldontlie API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified resource could not be found.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- Stop bombarding us.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
