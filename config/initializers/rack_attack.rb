@@ -5,9 +5,12 @@ class Rack::Attack
     request.ip
   end
 
-  spammers = ENV['ip_blacklist'].split(/,\s*/)
-  spammer_regexp = Regexp.union(spammers)
-  blocklist('block spammers') do |request|
-    request.ip =~ spammer_regexp
+  spammers = ENV['ip_blacklist'].to_s.split(/,\s*/)
+
+  unless spammers.empty?
+    spammer_regexp = Regexp.union(spammers)
+    blocklist('block spammers') do |request|
+      request.ip =~ spammer_regexp
+    end
   end
 end
