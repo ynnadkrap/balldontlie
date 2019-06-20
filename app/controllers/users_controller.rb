@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     session[:user_id] = user.id
 
     # TODO: send back API token
-    render status: 200
+    render json: {}
   end
 
   private

@@ -1,6 +1,24 @@
 # frozen_string_literal: true
 
 describe SessionsController, type: :controller do
+  describe '#index' do
+    context 'when user has a session' do
+      let!(:user) { create(:user) }
+
+      before do
+        login(user)
+        get :index
+      end
+
+      it 'returns session info' do
+        expect(response.status).to eq 200
+
+        data = JSON.parse(response.body)
+        expect(data.dig('email')).to eq user.email
+      end
+    end
+  end
+
   describe '#create' do
     let!(:user) { create(:user, email: 'foo@bar.com', password: 'password') }
     let(:request) { post :create, params: params }

@@ -20,6 +20,7 @@ Bundler.require(*Rails.groups)
 
 module Balldontlie
   class Application < Rails::Application
+    # TODO: restrict origin based on routes. Non-public routes should be origin only.
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'

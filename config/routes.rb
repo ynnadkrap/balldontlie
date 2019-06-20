@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:create]
-  resources :sessions, only: [:create]
+  resources :sessions, only: %i[create index]
+  post 'logout', to: 'sessions#destroy'
 
   get '/', to: redirect('index.html')
 end
