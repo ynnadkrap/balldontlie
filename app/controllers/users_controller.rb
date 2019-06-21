@@ -2,12 +2,10 @@
 
 class UsersController < ApplicationController
   def create
-    # TODO: create API token
     user = User.create!(create_params)
     session[:user_id] = user.id
 
-    # TODO: send back API token
-    render json: {}
+    render json: { token: user.token }
   end
 
   private
