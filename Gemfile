@@ -17,7 +17,7 @@ gem 'pg', '~> 0.18'
 gem 'blueprinter'
 gem 'kaminari'
 gem 'newrelic_rpm'
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 gem 'rack-cors', require: 'rack/cors'
 gem 'sentry-raven'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
