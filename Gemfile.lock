@@ -46,8 +46,6 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.6)
-    ddtrace (0.32.0)
-      msgpack
     diff-lcs (1.3)
     erubi (1.9.0)
     factory_bot (4.11.1)
@@ -89,7 +87,6 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
-    msgpack (1.3.3)
     multipart-post (2.1.1)
     newrelic_rpm (6.8.0.360)
     nio4r (2.5.2)
@@ -216,7 +213,6 @@ PLATFORMS
 DEPENDENCIES
   blueprinter
   byebug
-  ddtrace
   factory_bot_rails (~> 4.0)
   hiredis (~> 0.6.3)
   kaminari
