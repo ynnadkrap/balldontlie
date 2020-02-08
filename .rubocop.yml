@@ -32,7 +32,7 @@ Metrics/AbcSize:
 Style/SymbolProc:
   Enabled: false
 
-Layout/IndentArray:
+Layout/FirstArrayElementIndentation:
   Enabled: false
 
 Metrics/PerceivedComplexity:

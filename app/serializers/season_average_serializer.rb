@@ -49,6 +49,6 @@ class SeasonAverageSerializer
   def pct(stats, num, den)
     return 0 if stats[den].zero?
 
-    (stats[num].to_f / stats[den].to_f).round(3)
+    (stats[num] / stats[den].to_f).round(3)
   end
 end
