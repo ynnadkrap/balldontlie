@@ -20,8 +20,6 @@ This is an [open source project](https://github.com/ynnadkrap/balldontlie). Feel
 
 Here's an example of something you can build with this API: [example](https://balldontlie-example.herokuapp.com/)
 
-If your sole purpose is to scrape all the data, please reach out to instead of bombarding our servers. We'll give you the data.
-
 Email us at hello@balldontlie.io with any comments or questions. We hope to build on top of this first iteration with community input. Please reach out if you want to help.
 
 Also, please feel free to [donate](https://www.patreon.com/balldontlie) to help keep the lights on.
