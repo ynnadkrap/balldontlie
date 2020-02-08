@@ -34,6 +34,7 @@ describe SeasonAverageQuery do
   context 'when player_ids and season are specified' do
     let!(:game_1) { create(:game, season: 2016) }
     let!(:game_2) { create(:game, season: 2016) }
+    let!(:game_3) { create(:game, season: 2016) }
 
     let!(:player_1) { create(:player, first_name: 'Paul', last_name: 'George') }
     let!(:player_2) { create(:player, first_name: 'Damian', last_name: 'Lillard') }
@@ -86,6 +87,9 @@ describe SeasonAverageQuery do
       )
     end
     let!(:player_stat_4) { create(:player_stat, game: game_2, player: player_2) }
+    let!(:player_stat_5) do
+      create(:player_stat, game: game_3, player: player_1, min: '0')
+    end
 
     let(:params) do
       { 'player_ids' => [player_1.public_id, player_2.public_id], 'season' => 2016 }

@@ -90,7 +90,7 @@ describe PlayerStatQuery do
     let!(:player_stat_3) { create(:player_stat, game: game_2) }
     let!(:player_stat_4) { create(:player_stat, game: game_3) }
 
-    let!(:params) { { 'dates' => ['2019-01-02', '2019-01-03'] } }
+    let!(:params) { { 'dates' => %w[2019-01-02 2019-01-03] } }
 
     it 'returns stats for the specified dates' do
       res = PlayerStatQuery.new(params: params).player_stats
