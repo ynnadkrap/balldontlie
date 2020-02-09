@@ -48,6 +48,7 @@ class SeasonAverageQuery
         AND players.public_id = ANY($2::int[])
         AND min IS NOT NULL
         AND min != '0'
+        AND min != ''
         AND postseason = false
       GROUP BY players.public_id, season
     SQL
