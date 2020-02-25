@@ -90,7 +90,7 @@ GEM
     multipart-post (2.1.1)
     newrelic_rpm (6.8.0.360)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
     parser (2.7.0.2)
