@@ -14,6 +14,8 @@ search: true
 
 Welcome to the balldontlie API!
 
+[Follow me on twitter!](https://twitter.com/hi_im_danny)
+
 You can use our free API to access NBA related data. No email required. No API key required.
 
 This is an [open source project](https://github.com/ynnadkrap/balldontlie). Feel free to open issues and pull requests.
