@@ -1,0 +1,4 @@
+this needs to manually be added to the public index.html file after builds
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2218090746335378"
+     crossorigin="anonymous"></script>
