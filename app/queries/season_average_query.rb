@@ -49,6 +49,8 @@ class SeasonAverageQuery
         AND min IS NOT NULL
         AND min != '0'
         AND min != ''
+        AND min != '00:00'
+        AND min != '00'
         AND postseason = false
       GROUP BY players.public_id, season
     SQL
