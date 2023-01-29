@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   end
 
   get '/docs', to: redirect('index.html')
-  get '/', to: redirect('https://app.balldontlie.io')
+  get '/', to: redirect('https://app.balldontlie.io'), allow_other_host: true, status: 301
 end
