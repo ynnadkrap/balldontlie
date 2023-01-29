@@ -13,5 +13,5 @@ Rails.application.routes.draw do
 
   get '/docs', to: redirect('index.html')
   get '/test', to: redirect('https://app.balldontlie.io')
-  root to: redirect(subdomain: 'app')
+  root to: 'main#index'
 end
