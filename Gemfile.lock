@@ -46,6 +46,12 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.6)
+    ddtrace (1.8.0)
+      debase-ruby_core_source (>= 0.10.16, <= 0.10.18)
+      libdatadog (~> 0.9.0.1.0)
+      libddwaf (~> 1.5.1.0.0)
+      msgpack
+    debase-ruby_core_source (0.10.18)
     diff-lcs (1.3)
     erubi (1.9.0)
     factory_bot (4.11.1)
@@ -74,6 +80,9 @@ GEM
       activerecord
       kaminari-core (= 1.2.0)
     kaminari-core (1.2.0)
+    libdatadog (0.9.0.1.0)
+    libddwaf (1.5.1.0.0)
+      ffi (~> 1.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -87,6 +96,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
+    msgpack (1.6.0)
     multipart-post (2.1.1)
     newrelic_rpm (6.8.0.360)
     nio4r (2.5.2)
@@ -213,6 +223,7 @@ PLATFORMS
 DEPENDENCIES
   blueprinter
   byebug
+  ddtrace
   factory_bot_rails (~> 4.0)
   hiredis (~> 0.6.3)
   kaminari
@@ -239,4 +250,4 @@ RUBY VERSION
    ruby 2.6.2p47
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
