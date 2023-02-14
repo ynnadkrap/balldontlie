@@ -78,6 +78,7 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+#
 production:
   <<: *default
   url: <%= ENV['NBA_DATABASE_URL'] %>
