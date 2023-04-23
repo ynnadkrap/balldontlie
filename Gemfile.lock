@@ -60,10 +60,6 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
-    faraday (2.7.4)
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.2)
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -111,7 +107,6 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    newrelic_rpm (9.2.0)
     nio4r (2.5.9)
     nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
@@ -216,9 +211,6 @@ GEM
     rubocop-ast (1.28.0)
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
-    ruby2_keywords (0.0.5)
-    sentry-raven (3.1.2)
-      faraday (>= 1.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -251,7 +243,6 @@ DEPENDENCIES
   hiredis (~> 0.6.3)
   kaminari
   listen (>= 3.0.5, < 3.2)
-  newrelic_rpm
   pg (~> 0.18)
   pry-byebug
   pry-rails
@@ -264,7 +255,6 @@ DEPENDENCIES
   rspec-rails
   rspec_junit_formatter
   rubocop
-  sentry-raven
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data

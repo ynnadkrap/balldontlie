@@ -3,9 +3,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  Raven.configure do |config|
-    config.dsn = 'https://c4a75f7c84b7426098004aab78e7dbc1:9f66fccf55e442a48e70d19ed20f4ef2@sentry.io/1382653'
-  end
   # Code is not reloaded between requests.
   config.cache_classes = true
 
