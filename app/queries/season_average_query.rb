@@ -18,10 +18,10 @@ class SeasonAverageQuery
 
   def data
     season = params['season']
-    player_ids = "{#{params['player_ids'].join(',')}}"
+    player_ids = "{#{params['player_ids'].map(&:to_i).join(',')}}"
 
-    ActiveRecord::Base.connection.exec_query <<~SQL, 'SQL', [[nil, season], [nil, player_ids]]
-      SELECT
+    ActiveRecord::Base.connection.exec_query(
+      "SELECT
         count(*) as games_played,
         players.public_id as player_id,
         season,
@@ -53,7 +53,9 @@ class SeasonAverageQuery
         AND min != '0:00'
         AND min != '00'
         AND postseason = false
-      GROUP BY players.public_id, season
-    SQL
+      GROUP BY players.public_id, season", "season_averages", [
+        ActiveRecord::Relation::QueryAttribute.new("season", season, ActiveRecord::Type::String.new),
+        ActiveRecord::Relation::QueryAttribute.new("player_ids", player_ids, ActiveRecord::Type::String.new)
+      ])
   end
 end
