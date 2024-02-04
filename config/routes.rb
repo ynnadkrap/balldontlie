@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/docs', to: redirect('home.html')
-  root to: redirect('https://app.balldontlie.io')
+  get '/docs', to: redirect('index.html')
+  get '/', to: redirect('index.html')
 end
