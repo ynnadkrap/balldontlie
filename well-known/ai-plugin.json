@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "BallDontLie Plugin",
+    "name_for_model": "balldontlie",
+    "description_for_human": "Use data to win internet arguments.",
+    "description_for_model": "Use data to win internet arguments.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "http://localhost:3333/openapi.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "https://app.balldontlie.io/favicon.ico",
+    "contact_email": "aaron.purewal@gmail.com",
+    "legal_info_url": "http://app.balldontlie.io"
+}
